@@ -7778,19 +7778,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\47499026833.INFOSCS\\.nuget\\packages\\": {}
+    "C:\\Users\\kauak\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\47499026833.INFOSCS\\Desktop\\apilab\\labware_webapi\\labware_webapi.csproj",
+      "projectUniqueName": "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\labware_webapi.csproj",
       "projectName": "labware_webapi",
-      "projectPath": "C:\\Users\\47499026833.INFOSCS\\Desktop\\apilab\\labware_webapi\\labware_webapi.csproj",
-      "packagesPath": "C:\\Users\\47499026833.INFOSCS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\47499026833.INFOSCS\\Desktop\\apilab\\labware_webapi\\obj\\",
+      "projectPath": "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\labware_webapi.csproj",
+      "packagesPath": "C:\\Users\\kauak\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\47499026833.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kauak\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7873,7 +7873,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.212\\RuntimeIdentifierGraph.json"
       }
     }
   }

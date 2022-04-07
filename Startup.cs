@@ -110,7 +110,7 @@ namespace labware_webapi
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-                       Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
+                       Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles/Images")),
                 RequestPath = "/img/"
             });
 
