@@ -2,6 +2,7 @@
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
+using labware_webapi.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,7 @@ namespace labware_webapi.Controllers
         {
             try
             {
+
                 if (tag == null)
                 {
                     return BadRequest("Não foi possível cadastrar");

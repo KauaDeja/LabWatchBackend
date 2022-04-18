@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Contexts;
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
+using labware_webapi.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,15 @@ namespace labware_webapi.Repositories
         public void Cadastrar(Comentario novoComentario)
         {
                 ctx.Comentarios.Add(novoComentario);
+               
+
+
+            if (novoComentario != null)
+            {
                 ctx.SaveChanges();
+            }
+
+
         }
 
         public void Deletar(int idComentario)

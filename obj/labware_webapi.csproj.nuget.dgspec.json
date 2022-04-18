@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\labware_webapi.csproj": {}
+    "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\labware_webapi.csproj": {
+    "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\labware_webapi.csproj",
+        "projectUniqueName": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj",
         "projectName": "labware_webapi",
-        "projectPath": "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\labware_webapi.csproj",
-        "packagesPath": "C:\\Users\\kauak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kauak\\OneDrive\\Área de Trabalho\\LabWatchBackend\\obj\\",
+        "projectPath": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj",
+        "packagesPath": "C:\\Users\\39965709882\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kauak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\39965709882\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,6 +51,10 @@
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[5.0.15, )"
+            },
+            "Microsoft.Azure.CognitiveServices.ContentModerator": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -97,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.212\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
