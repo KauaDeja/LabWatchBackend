@@ -70,7 +70,7 @@ namespace labware_webapi
 
             services.AddCors(options =>
             {
-                options.AddPolicy("CorPolicy",
+                options.AddPolicy("CorsPolicy",
                 builder =>
                 {
                 builder.WithOrigins("*") //mudar dps pra estrela
