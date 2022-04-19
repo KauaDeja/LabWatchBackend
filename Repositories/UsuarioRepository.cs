@@ -16,7 +16,7 @@ namespace labware_webapi.Repositories
     {
         LabWatchContext ctx = new LabWatchContext();
 
-        public string AtualizarFotoDir(int id_usuario)
+    /*    public string AtualizarFotoDir(int id_usuario)
         {
             string nome_arquivo = id_usuario.ToString() + ".png";
 
@@ -29,7 +29,7 @@ namespace labware_webapi.Repositories
             }
 
             return null;
-        }
+        }*/
 
         public void AtualizarPeloId(int idUsuario, Usuario usuarioAtualizado)
         {
@@ -91,7 +91,7 @@ namespace labware_webapi.Repositories
             return null;
         }
 
-        public void SalvarFotoDir(IFormFile foto, int id_usuario)
+     /*   public void SalvarFotoDir(IFormFile foto, int id_usuario)
         {
             string nome_arquivo = id_usuario.ToString() + ".png ";
 
@@ -99,7 +99,7 @@ namespace labware_webapi.Repositories
             {
                 foto.CopyTo(stream);
             }
-        }
+        }*/
 
     }
 

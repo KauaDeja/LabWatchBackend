@@ -21,14 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Perfil\" />
     <Folder Include="StaticFiles\Images\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Perfil\14.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="StaticFiles\Images\31280604-5fb9-4dba-9664-b15ca77ce2ac.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
