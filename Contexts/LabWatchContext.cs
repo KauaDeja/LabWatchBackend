@@ -18,6 +18,7 @@ namespace labware_webapi.Contexts
         {
         }
 
+        public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Comentario> Comentarios { get; set; }
         public virtual DbSet<Equipe> Equipes { get; set; }
         public virtual DbSet<Projeto> Projetos { get; set; }
@@ -33,19 +34,49 @@ namespace labware_webapi.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=srv-db-labwatch.database.windows.net; initial catalog=DBLabWatch; user Id=labuser; pwd=Labwatch132;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Cliente>(entity =>
+            {
+                entity.HasKey(e => e.IdCliente)
+                    .HasName("PK__Cliente__885457EE092CDEC8");
+
+                entity.ToTable("Cliente");
+
+                entity.Property(e => e.IdCliente).HasColumnName("idCliente");
+
+                entity.Property(e => e.DataCadastro)
+                    .HasColumnType("smalldatetime")
+                    .HasColumnName("dataCadastro");
+
+                entity.Property(e => e.Descricao)
+                    .IsRequired()
+                    .HasMaxLength(300)
+                    .IsUnicode(false)
+                    .HasColumnName("descricao");
+
+                entity.Property(e => e.FotoCliente)
+                    .IsUnicode(false)
+                    .HasColumnName("fotoCliente");
+
+                entity.Property(e => e.NomeCliente)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("nomeCliente");
+            });
 
             modelBuilder.Entity<Comentario>(entity =>
             {
                 entity.HasKey(e => e.IdComentario)
-                    .HasName("PK__Comentar__C74515DA129F9DD7");
+                    .HasName("PK__Comentar__C74515DA4F51B2F5");
 
                 entity.ToTable("Comentario");
 
@@ -64,18 +95,18 @@ namespace labware_webapi.Contexts
                 entity.HasOne(d => d.IdTaskNavigation)
                     .WithMany(p => p.Comentarios)
                     .HasForeignKey(d => d.IdTask)
-                    .HasConstraintName("FK__Comentari__idTas__5DCAEF64");
+                    .HasConstraintName("FK__Comentari__idTas__3F115E1A");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Comentarios)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Comentari__idUsu__5EBF139D");
+                    .HasConstraintName("FK__Comentari__idUsu__40058253");
             });
 
             modelBuilder.Entity<Equipe>(entity =>
             {
                 entity.HasKey(e => e.IdEquipe)
-                    .HasName("PK__Equipe__981ACF453ADB9E73");
+                    .HasName("PK__Equipe__981ACF451ECFD781");
 
                 entity.ToTable("Equipe");
 
@@ -95,23 +126,26 @@ namespace labware_webapi.Contexts
             modelBuilder.Entity<Projeto>(entity =>
             {
                 entity.HasKey(e => e.IdProjeto)
-                    .HasName("PK__Projeto__8FCCED76DFEE1D37");
+                    .HasName("PK__Projeto__8FCCED763678D67C");
 
                 entity.ToTable("Projeto");
 
                 entity.Property(e => e.IdProjeto).HasColumnName("idProjeto");
 
                 entity.Property(e => e.DataConclusao)
-                    .HasColumnType("datetime")
+                    .HasColumnType("smalldatetime")
                     .HasColumnName("dataConclusao");
 
                 entity.Property(e => e.DataInicio)
-                    .HasColumnType("datetime")
+                    .HasColumnType("smalldatetime")
                     .HasColumnName("dataInicio");
 
-                entity.Property(e => e.nomeCliente)
-                   .HasColumnType("string")
-                   .HasColumnName("nomeCliente");
+                entity.Property(e => e.Descricao)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("descricao");
+
+                entity.Property(e => e.IdCliente).HasColumnName("idCliente");
 
                 entity.Property(e => e.IdEquipe).HasColumnName("idEquipe");
 
@@ -123,25 +157,26 @@ namespace labware_webapi.Contexts
                     .IsUnicode(false)
                     .HasColumnName("tituloProjeto");
 
-                entity.Property(e => e.Descricao)
-                   .HasColumnType("string")
-                   .HasColumnName("descricao");
+                entity.HasOne(d => d.IdClienteNavigation)
+                    .WithMany(p => p.Projetos)
+                    .HasForeignKey(d => d.IdCliente)
+                    .HasConstraintName("FK__Projeto__idClien__367C1819");
 
                 entity.HasOne(d => d.IdEquipeNavigation)
                     .WithMany(p => p.Projetos)
                     .HasForeignKey(d => d.IdEquipe)
-                    .HasConstraintName("FK__Projeto__idEquip__5441852A");
+                    .HasConstraintName("FK__Projeto__idEquip__3587F3E0");
 
                 entity.HasOne(d => d.IdStatusProjetoNavigation)
                     .WithMany(p => p.Projetos)
                     .HasForeignKey(d => d.IdStatusProjeto)
-                    .HasConstraintName("FK__Projeto__idStatu__5535A963");
+                    .HasConstraintName("FK__Projeto__idStatu__3493CFA7");
             });
 
             modelBuilder.Entity<StatusProjeto>(entity =>
             {
                 entity.HasKey(e => e.IdStatusProjeto)
-                    .HasName("PK__StatusPr__F803DD2AC2B09538");
+                    .HasName("PK__StatusPr__F803DD2A4F5A0A7E");
 
                 entity.ToTable("StatusProjeto");
 
@@ -157,7 +192,7 @@ namespace labware_webapi.Contexts
             modelBuilder.Entity<StatusTask>(entity =>
             {
                 entity.HasKey(e => e.IdStatusTask)
-                    .HasName("PK__StatusTa__8E7D8B7A5C211134");
+                    .HasName("PK__StatusTa__8E7D8B7A42F17D65");
 
                 entity.ToTable("StatusTask");
 
@@ -173,7 +208,7 @@ namespace labware_webapi.Contexts
             modelBuilder.Entity<StatusUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdStatus)
-                    .HasName("PK__StatusUs__01936F7406CA7487");
+                    .HasName("PK__StatusUs__01936F74449B714F");
 
                 entity.ToTable("StatusUsuario");
 
@@ -189,7 +224,7 @@ namespace labware_webapi.Contexts
             modelBuilder.Entity<Tag>(entity =>
             {
                 entity.HasKey(e => e.IdTag)
-                    .HasName("PK__Tag__020FEDB8BB707C70");
+                    .HasName("PK__Tag__020FEDB89D8E21DE");
 
                 entity.ToTable("Tag");
 
@@ -205,7 +240,7 @@ namespace labware_webapi.Contexts
             modelBuilder.Entity<Task>(entity =>
             {
                 entity.HasKey(e => e.IdTask)
-                    .HasName("PK__Task__C3E0F4DA8CBF6C11");
+                    .HasName("PK__Task__C3E0F4DA1335FD5D");
 
                 entity.ToTable("Task");
 
@@ -238,28 +273,28 @@ namespace labware_webapi.Contexts
                 entity.HasOne(d => d.IdProjetoNavigation)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.IdProjeto)
-                    .HasConstraintName("FK__Task__idProjeto__5812160E");
+                    .HasConstraintName("FK__Task__idProjeto__395884C4");
 
                 entity.HasOne(d => d.IdStatusTaskNavigation)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.IdStatusTask)
-                    .HasConstraintName("FK__Task__idStatusTa__59FA5E80");
+                    .HasConstraintName("FK__Task__idStatusTa__3B40CD36");
 
                 entity.HasOne(d => d.IdTagNavigation)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.IdTag)
-                    .HasConstraintName("FK__Task__idTag__59063A47");
+                    .HasConstraintName("FK__Task__idTag__3A4CA8FD");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Task__idUsuario__5AEE82B9");
+                    .HasConstraintName("FK__Task__idUsuario__3C34F16F");
             });
 
             modelBuilder.Entity<TipoUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdTipoUsuario)
-                    .HasName("PK__TipoUsua__03006BFFB6EAC166");
+                    .HasName("PK__TipoUsua__03006BFFC8AC4693");
 
                 entity.ToTable("TipoUsuario");
 
@@ -275,7 +310,7 @@ namespace labware_webapi.Contexts
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__645723A680149A01");
+                    .HasName("PK__Usuario__645723A68BC4D24E");
 
                 entity.ToTable("Usuario");
 
@@ -300,10 +335,11 @@ namespace labware_webapi.Contexts
                     .HasColumnType("decimal(18, 0)")
                     .HasColumnName("horasTrabalhadas");
 
+                entity.Property(e => e.IdEquipe).HasColumnName("idEquipe");
+
                 entity.Property(e => e.IdStatus).HasColumnName("idStatus");
 
                 entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
-                entity.Property(e => e.IdEquipe).HasColumnName("idEquipe");
 
                 entity.Property(e => e.NomeUsuario)
                     .IsRequired()
@@ -323,20 +359,22 @@ namespace labware_webapi.Contexts
                     .IsUnicode(false)
                     .HasColumnName("sobreNome");
 
+                entity.Property(e => e.UsuarioAtivo).HasColumnName("usuarioAtivo");
+
+                entity.HasOne(d => d.IdEquipeNavigation)
+                    .WithMany(p => p.Usuarios)
+                    .HasForeignKey(d => d.IdEquipe)
+                    .HasConstraintName("FK__Usuario__idEquip__18EBB532");
+
                 entity.HasOne(d => d.IdStatusNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdStatus)
-                    .HasConstraintName("FK__Usuario__idStatu__3B75D760");
+                    .HasConstraintName("FK__Usuario__idStatu__619B8048");
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__Usuario__idTipoU__3A81B327");
-
-                entity.HasOne(d => d.IdEquipeNavigation)
-                 .WithMany(p => p.Usuarios)
-                 .HasForeignKey(d => d.IdEquipe)
-                 .HasConstraintName("FK__Usuario__idEquip__18EBB532");
+                    .HasConstraintName("FK__Usuario__idTipoU__60A75C0F");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -16,6 +16,7 @@ namespace labware_webapi.Domains
         public int IdEquipe { get; set; }
         public string NomeEquipe { get; set; }
         public decimal HorasTrabalhadas { get; set; }
+
         public virtual ICollection<Projeto> Projetos { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
     }
