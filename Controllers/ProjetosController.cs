@@ -2,6 +2,7 @@
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
+using labware_webapi.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace labware_webapi.Controllers
             _repository = new ProjetoRepository();
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -40,7 +41,7 @@ namespace labware_webapi.Controllers
         }
 
 
-
+        [Authorize]
         [HttpGet("{idProjeto}")]
         public IActionResult BuscarPorId(int idProjeto)
         {
@@ -77,7 +78,7 @@ namespace labware_webapi.Controllers
          }*/
 
 
-
+        [Authorize]
         [HttpPut("{idProjeto}")]
         public IActionResult Atualizar(int idProjeto, Projeto projeto)
         {
@@ -92,6 +93,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{idProjeto}")]
         public IActionResult Deletar(int idProjeto)
         {
@@ -108,42 +110,43 @@ namespace labware_webapi.Controllers
 
         }
 
-           /* [HttpPut]
-            public IActionResult PutEquipamento([FromForm] Projeto projeto, IFormFile arquivo, int idProjeto)
-            {
+        /* [HttpPut]
+         public IActionResult PutEquipamento([FromForm] Projeto projeto, IFormFile arquivo, int idProjeto)
+         {
 
-                #region Upload da Imagem com extensões permitidas apenas
-                string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
-                string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas);
+             #region Upload da Imagem com extensões permitidas apenas
+             string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
+             string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas);
 
-                if (uploadResultado == "")
-                {
-                    return BadRequest("Arquivo não encontrado");
-                }
+             if (uploadResultado == "")
+             {
+                 return BadRequest("Arquivo não encontrado");
+             }
 
-                if (uploadResultado == "Extensão não permitida")
-                {
-                    return BadRequest("Extensão de arquivo não permitida");
-                }
+             if (uploadResultado == "Extensão não permitida")
+             {
+                 return BadRequest("Extensão de arquivo não permitida");
+             }
 
-                projeto.fotoCliente = uploadResultado;
-                #endregion
-                             
-
-                try
-                {
-                _repository.AtualizarFoto(projeto, idProjeto);
-                return StatusCode(204);
-               
-            }
-                catch (Exception error)
-                {
-                   return BadRequest(error.Message);
-                }
+             projeto.fotoCliente = uploadResultado;
+             #endregion
 
 
-                }*/
+             try
+             {
+             _repository.AtualizarFoto(projeto, idProjeto);
+             return StatusCode(204);
 
+         }
+             catch (Exception error)
+             {
+                return BadRequest(error.Message);
+             }
+
+
+             }*/
+
+        [Authorize]
         [HttpGet("Minhas/{idEquipe}")]
         public IActionResult GetMyOwn(int idEquipe)
         {
@@ -159,6 +162,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Cadastrar(Projeto projeto)
         {
@@ -169,6 +173,12 @@ namespace labware_webapi.Controllers
                     return BadRequest("Não foi possível cadastrar");
                 };
 
+                bool titulo = Moderador.ModerarTexto(projeto.TituloProjeto);
+                bool descricao = Moderador.ModerarTexto(projeto.Descricao);
+                if (titulo || descricao)
+                {
+                    return BadRequest("Texto inaproripado, por favor reescreva sem usar palavras inadequadas ou dados sensíveis.");
+                }
                 _repository.Cadastrar(projeto);
                 return StatusCode(201);
             }
