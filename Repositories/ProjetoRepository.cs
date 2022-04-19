@@ -27,8 +27,6 @@ namespace labware_webapi.Repositories
                 projBuscado.TituloProjeto = projetoAtualizado.TituloProjeto;
                 projBuscado.DataInicio = projetoAtualizado.DataInicio;
                 projBuscado.DataConclusao = projetoAtualizado.DataConclusao;
-                projBuscado.IdClienteNavigation.NomeCliente = projetoAtualizado.IdClienteNavigation.NomeCliente;
-                projBuscado.IdClienteNavigation.FotoCliente = projetoAtualizado.IdClienteNavigation.FotoCliente;
                 ctx.Projetos.Update(projBuscado);
                 ctx.SaveChangesAsync();
             }
@@ -45,7 +43,6 @@ namespace labware_webapi.Repositories
                 ctx.SaveChanges();
             }
         }
-
 
         public Projeto Buscar(int idProjeto)
         {
@@ -66,8 +63,7 @@ namespace labware_webapi.Repositories
 
         public List<Projeto> ListarTodos()
         {
-            return ctx.Projetos
-                .ToList();
+            return ctx.Projetos.Include(p => p.IdClienteNavigation).ToList();
         }
               
         public List<Projeto> VerMinhas(int idEquipe)

@@ -159,5 +159,23 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Cadastrar(Projeto projeto)
+        {
+            try
+            {
+                if (projeto == null)
+                {
+                    return BadRequest("Não foi possível cadastrar");
+                };
+
+                _repository.Cadastrar(projeto);
+                return StatusCode(201);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error.Message);
+            }
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using labware_webapi.Contexts;
 using labware_webapi.Domains;
-using labware_webapi.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Patrimonio.Utils;
@@ -11,21 +10,18 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Controllers
 {
-    
     [Route("api/[controller]")]
     [ApiController]
-    public class CadastrarProjetosController : ControllerBase
+    public class ClientesCadastrarController : ControllerBase
     {
-
         private readonly LabWatchContext _context;
-
-        public CadastrarProjetosController(LabWatchContext context)
+        public ClientesCadastrarController(LabWatchContext context)
         {
             _context = context;
         }
 
         [HttpPost]
-        public async Task<ActionResult<Projeto>> PostEquipamento([FromForm] Projeto projeto, IFormFile arquivo)
+        public async Task<ActionResult<Cliente>> PostCliente([FromForm] Cliente cliente, IFormFile arquivo)
         {
 
             #region Upload da Imagem com extensões permitidas apenas
@@ -42,22 +38,13 @@ namespace labware_webapi.Controllers
                 return BadRequest("Extensão de arquivo não permitida");
             }
 
-            projeto.IdClienteNavigation.FotoCliente = uploadResultado;
+            cliente.FotoCliente = uploadResultado;
             #endregion
-            bool titulo = Moderador.ModerarTexto(projeto.TituloProjeto);
-            bool descricao = Moderador.ModerarTexto(projeto.Descricao);
-
-
-            if (titulo || descricao)
-            {
-                return BadRequest("Texto inaproripado, por favor reescreva sem usar palavras inadequadas ou dados sensíveis.");
-            }
-
-
-            _context.Projetos.Add(projeto);
+          
+            _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            return Created("Projeto", projeto);
+            return Created("Cliente", cliente);
 
 
         }
