@@ -27,8 +27,8 @@ namespace labware_webapi.Repositories
                 projBuscado.TituloProjeto = projetoAtualizado.TituloProjeto;
                 projBuscado.DataInicio = projetoAtualizado.DataInicio;
                 projBuscado.DataConclusao = projetoAtualizado.DataConclusao;
-                projBuscado.nomeCliente = projetoAtualizado.nomeCliente;
-                projBuscado.fotoCliente = projetoAtualizado.fotoCliente;
+                projBuscado.IdClienteNavigation.NomeCliente = projetoAtualizado.IdClienteNavigation.NomeCliente;
+                projBuscado.IdClienteNavigation.FotoCliente = projetoAtualizado.IdClienteNavigation.FotoCliente;
                 ctx.Projetos.Update(projBuscado);
                 ctx.SaveChangesAsync();
             }
@@ -40,7 +40,7 @@ namespace labware_webapi.Repositories
 
             if (projetoAtualizado.TituloProjeto != null)
             {
-               projBuscado.fotoCliente = projetoAtualizado.fotoCliente;
+               projBuscado.IdClienteNavigation.FotoCliente = projetoAtualizado.IdClienteNavigation.FotoCliente;
                 ctx.Projetos.Update(projBuscado);
                 ctx.SaveChanges();
             }
@@ -80,8 +80,6 @@ namespace labware_webapi.Repositories
                     TituloProjeto = c.TituloProjeto,
                     DataInicio = c.DataInicio,
                     DataConclusao = c.DataConclusao,
-                    nomeCliente = c.nomeCliente,
-                    fotoCliente = c.nomeCliente,
                     Descricao = c.Descricao,
                     IdEquipeNavigation = new Equipe()
                     {
@@ -89,7 +87,15 @@ namespace labware_webapi.Repositories
                         NomeEquipe = c.IdEquipeNavigation.NomeEquipe,
                         HorasTrabalhadas = c.IdEquipeNavigation.HorasTrabalhadas
 
-                    }
+                    },
+                     IdClienteNavigation = new Cliente()
+                     {
+                         IdCliente = c.IdClienteNavigation.IdCliente,
+                         NomeCliente  = c.IdClienteNavigation.NomeCliente,
+                         Descricao = c.IdClienteNavigation.Descricao,
+                         FotoCliente  = c.IdClienteNavigation.FotoCliente,
+                         DataCadastro = c.IdClienteNavigation.DataCadastro
+                     }
                 })
                 .Where(p => p.IdEquipeNavigation.IdEquipe == idEquipe ).ToList();
         }

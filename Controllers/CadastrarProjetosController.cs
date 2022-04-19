@@ -42,7 +42,7 @@ namespace labware_webapi.Controllers
                 return BadRequest("Extensão de arquivo não permitida");
             }
 
-            projeto.fotoCliente = uploadResultado;
+            projeto.IdClienteNavigation.FotoCliente = uploadResultado;
             #endregion
             bool titulo = Moderador.ModerarTexto(projeto.TituloProjeto);
             bool descricao = Moderador.ModerarTexto(projeto.Descricao);
