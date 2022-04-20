@@ -28,6 +28,12 @@
     <None Update="StaticFiles\Images\31280604-5fb9-4dba-9664-b15ca77ce2ac.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="StaticFiles\Images\59876b4f-d9e7-4a69-bc44-79f738e5d236.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticFiles\Images\ff5e87d3-4320-46e3-bdb5-eb85816471b9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 <PropertyGroup>
