@@ -9,5 +9,6 @@ namespace labware_webapi.Interfaces
     interface IStatusTaskRepository
     {
         List<StatusTask> ListarTodos();
+        void Cadastrar(StatusTask task);
     }
 }

@@ -36,7 +36,7 @@ namespace labware_webapi.Repositories
             ctx.SaveChanges();
         }
 
-    
+
         public void Deletar(int idEquipe)
         {
             ctx.Equipes.Remove(Buscar(idEquipe));
@@ -44,9 +44,9 @@ namespace labware_webapi.Repositories
         }
 
         public List<Equipe> ListarTodos()
-        {                 
-           return ctx.Equipes.Include(p => p.Usuarios ).ToList();
-           
+        {
+            return ctx.Equipes.Include(p => p.Usuarios).ToList();
+
         }
     }
-}
+    }

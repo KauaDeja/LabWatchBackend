@@ -54,6 +54,12 @@ namespace labware_webapi.Repositories
             return ctx.Usuarios.FirstOrDefault(m => m.IdUsuario == idUsuario);
         }
 
+        public Usuario BuscarPorEmail(string email)
+        {
+            return ctx.Usuarios.FirstOrDefault(m => m.Email == email);
+        }
+
+
         public void Cadastrar(Usuario novoUsuario)
         {
             ctx.Usuarios.Add(novoUsuario);

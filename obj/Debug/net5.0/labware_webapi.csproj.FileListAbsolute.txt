@@ -235,3 +235,5 @@ C:\Users\47499026833.INFOSCS\Desktop\LabWatch_API\obj\Debug\net5.0\ref\labware_w
 C:\Users\47499026833.INFOSCS\Desktop\LabWatch_API\obj\Debug\net5.0\labware_webapi.xml
 C:\Users\47499026833.INFOSCS\Desktop\LabWatch_API\obj\Debug\net5.0\labware_webapi.pdb
 C:\Users\47499026833.INFOSCS\Desktop\LabWatch_API\obj\Debug\net5.0\labware_webapi.genruntimeconfig.cache
+C:\Users\47499026833.INFOSCS\Desktop\LabWatch_API\bin\Debug\net5.0\StaticFiles\Images\59876b4f-d9e7-4a69-bc44-79f738e5d236.png
+C:\Users\47499026833.INFOSCS\Desktop\LabWatch_API\bin\Debug\net5.0\StaticFiles\Images\ff5e87d3-4320-46e3-bdb5-eb85816471b9.png
