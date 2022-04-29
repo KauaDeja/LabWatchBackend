@@ -56,7 +56,7 @@ namespace labware_webapi.Repositories
 
         public List<Task> ListarTodos()
         {
-            return ctx.Tasks.Include(p => p.IdProjetoNavigation).ToList();
+            return ctx.Tasks.Include(p => p.IdProjetoNavigation).Include(c => c.IdStatusTaskNavigation).ToList();
         }
     }
 }
