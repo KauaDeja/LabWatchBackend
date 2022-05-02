@@ -74,7 +74,7 @@ namespace labware_webapi.Repositories
 
         public List<Usuario> ListarTodos()
         {
-            return ctx.Usuarios.Include(c => c.IdEquipeNavigation).ToList();
+            return ctx.Usuarios.ToList();
         }
 
         public Usuario Login(string email, string senha)

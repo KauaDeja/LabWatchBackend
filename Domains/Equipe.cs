@@ -10,7 +10,7 @@ namespace labware_webapi.Domains
         public Equipe()
         {
             Projetos = new HashSet<Projeto>();
-            Usuarios = new HashSet<Usuario>();
+            UsuarioEquipes = new HashSet<UsuarioEquipe>();
         }
 
         public int IdEquipe { get; set; }
@@ -18,6 +18,6 @@ namespace labware_webapi.Domains
         public decimal HorasTrabalhadas { get; set; }
 
         public virtual ICollection<Projeto> Projetos { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<UsuarioEquipe> UsuarioEquipes { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace labware_webapi.Repositories
 
         public List<Equipe> ListarTodos()
         {
-            return ctx.Equipes.Include(p => p.Usuarios).ToList();
+            return ctx.Equipes.ToList();
 
         }
     }

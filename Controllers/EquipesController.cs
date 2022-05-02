@@ -103,6 +103,21 @@ namespace labware_webapi.Controllers
             }
 
         }
+
+        //[HttpPatch("{idUsuario}")]
+        //public IActionResult MudarEquipe(int idUsuario, Equipe EquipeAtualizada)
+        //{
+        //    try
+        //    {
+        //        _repository.MudarEquipe(idUsuario, EquipeAtualizada);
+
+        //        return StatusCode(200);
+        //    }
+        //    catch (Exception erro)
+        //    {
+        //        return BadRequest(erro);
+        //    }
+        //}
         }
 
     }
