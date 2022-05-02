@@ -1,6 +1,6 @@
-//using labware_webapi.Contexts;
-//using labware_webapi.Interfaces;
-//using labware_webapi.Repositories;
+using labware_webapi.Contexts;
+using labware_webapi.Interfaces;
+using labware_webapi.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -83,13 +83,13 @@ namespace labware_webapi
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
-            //services.AddDbContext<LabWatchContext>(options =>
-            //                options.UseSqlServer(Configuration.GetConnectionString("Default"))
-            //            );
+            services.AddDbContext<LabWatchContext>(options =>
+                            options.UseSqlServer(Configuration.GetConnectionString("Default"))
+                        );
 
-            //services.AddTransient<DbContext, LabWatchContext>();
-            //services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-            //services.AddTransient<IProjetoRepository, ProjetoRepository>();
+            services.AddTransient<DbContext, LabWatchContext>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IProjetoRepository, ProjetoRepository>();
 
         }
 
