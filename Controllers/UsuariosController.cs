@@ -39,7 +39,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-      /*  [HttpPost]
+        [HttpPost]
         public IActionResult Cadastrar(Usuario usuario)
         {
             try
@@ -56,7 +56,7 @@ namespace labware_webapi.Controllers
             {
                 return BadRequest(error.Message);
             }
-        }*/
+        }
 
         [HttpPut]
         public IActionResult Atualizar(int idUsuario, Usuario usuario)
@@ -112,10 +112,6 @@ namespace labware_webapi.Controllers
                 return BadRequest(error.Message);
             }
         }
-
-
-
-
 
         /*
                 [HttpPost("imagem/dir")]
