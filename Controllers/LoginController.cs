@@ -21,9 +21,9 @@ namespace labware_webapi.Controllers
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
 
-        public LoginController()
+        public LoginController(IUsuarioRepository repo)
         {
-            _usuarioRepository = new UsuarioRepository();
+            _usuarioRepository = repo;
         }
 
         [HttpPost]

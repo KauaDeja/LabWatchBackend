@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IUsuarioEquipeRepository
+    public interface IUsuarioEquipeRepository
     {
         List<UsuarioEquipe> ListarTodos();
         UsuarioEquipe Buscar(int idEquipe);

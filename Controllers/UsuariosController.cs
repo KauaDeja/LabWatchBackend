@@ -21,9 +21,9 @@ namespace labware_webapi.Controllers
     public class UsuariosController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
-        public UsuariosController()
+        public UsuariosController(IUsuarioRepository repo)
         {
-            _usuarioRepository = new UsuarioRepository();
+            _usuarioRepository = repo;
         }
 
         [HttpGet]

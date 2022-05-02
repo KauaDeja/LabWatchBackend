@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IProjetoRepository
+    public interface IProjetoRepository
     {
         List<Projeto> ListarTodos();
         Projeto Buscar(int idProjeto);

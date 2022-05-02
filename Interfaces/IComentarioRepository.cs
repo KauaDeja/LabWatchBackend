@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IComentarioRepository
+    public interface IComentarioRepository
     {
         List<Comentario> ListarTodos();
         void Cadastrar(Comentario novoComentario);

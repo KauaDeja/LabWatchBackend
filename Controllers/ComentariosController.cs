@@ -16,9 +16,9 @@ namespace labware_webapi.Controllers
     public class ComentariosController : ControllerBase
     {
         private IComentarioRepository _repository { get; set; }
-        public ComentariosController()
+        public ComentariosController(IComentarioRepository repo)
         {
-            _repository = new ComentarioRepository();
+            _repository = repo;
         }
 
         [HttpGet]

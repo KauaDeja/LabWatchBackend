@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IStatusProjetoRepository
+    public interface IStatusProjetoRepository
     {
         List<StatusProjeto> ListarTodos();
     }

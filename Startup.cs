@@ -88,9 +88,15 @@ namespace labware_webapi
                         );
 
             services.AddTransient<DbContext, LabWatchContext>();
-            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IProjetoRepository, ProjetoRepository>();
-
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IUsuarioEquipeRepository, UsuarioEquipeRepository>();
+            services.AddTransient<IEquipeRepository, EquipeRepository>();
+            services.AddTransient<IComentarioRepository, ComentarioRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IStatusTaskRepository, StatusTaskRepository>();
+            services.AddTransient<ITaskRepository, TaskRepository>();
+            services.AddTransient<ITagRepository, TagRepository>();
         }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IClienteRepository
+    public interface IClienteRepository
     {
         List<Cliente> ListarTodos();
         Cliente Buscar(int idCliente);

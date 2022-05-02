@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface ITagRepository
+    public interface ITagRepository
     {
         List<Tag> Listar();
         void Cadastrar(Tag tag);

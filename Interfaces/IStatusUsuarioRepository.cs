@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IStatusUsuarioRepository
+    public interface IStatusUsuarioRepository
     {
         List<StatusUsuario> ListarTodos();
         void AtualizarPeloId(int idStatus, StatusUsuario statusAtualizado);

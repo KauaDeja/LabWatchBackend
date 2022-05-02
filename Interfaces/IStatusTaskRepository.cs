@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
-    interface IStatusTaskRepository
+    public interface IStatusTaskRepository
     {
         List<StatusTask> ListarTodos();
         void Cadastrar(StatusTask task);

@@ -6,7 +6,7 @@ using Task = labware_webapi.Domains.Task;
 
 namespace labware_webapi.Interfaces
 {
-    interface ITaskRepository
+    public interface ITaskRepository
     {
         List<Task> ListarTodos();
         List<Task> ListarMinhas(int idUsuario);

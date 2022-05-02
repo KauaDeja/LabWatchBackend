@@ -1,12 +1,8 @@
 ﻿using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace labware_webapi.Controllers
 {
@@ -16,9 +12,9 @@ namespace labware_webapi.Controllers
     public class EquipesController : ControllerBase
     {
         private IEquipeRepository _repository { get; set; }
-        public EquipesController()
+        public EquipesController(IEquipeRepository repo)
         {
-            _repository = new EquipeRepository();
+            _repository = repo;
         }
 
 
