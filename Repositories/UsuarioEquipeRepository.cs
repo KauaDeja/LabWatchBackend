@@ -2,6 +2,7 @@
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,8 +37,10 @@ namespace labware_webapi.Repositories
                 .Include(e => e.IdUsuarioNavigation)
                 .Select(e => new UsuarioEquipe()
                 {
+                    IdusuarioEquipe = e.IdusuarioEquipe,
                     IdEquipeNavigation = new Equipe()
                     {
+                        IdEquipe = e.IdEquipeNavigation.IdEquipe,
                         NomeEquipe = e.IdEquipeNavigation.NomeEquipe,
                         HorasTrabalhadas = e.IdEquipeNavigation.HorasTrabalhadas,
                         UsuarioEquipes = e.IdEquipeNavigation.UsuarioEquipes
@@ -48,14 +51,14 @@ namespace labware_webapi.Repositories
                         NomeUsuario = e.IdUsuarioNavigation.NomeUsuario,
                         SobreNome = e.IdUsuarioNavigation.SobreNome
                     }
-                    
+
                 })
                 .ToList();
         }
 
         public void MudarEquipe(int idUsuario, UsuarioEquipe EquipeAtualizada)
         {
-            UsuarioEquipe equipeBuscada = Buscar(EquipeAtualizada.IdusuarioEquipe);
+            UsuarioEquipe equipeBuscada = Buscar((Convert.ToInt32(EquipeAtualizada.IdEquipe)));
 
             Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(p => p.IdUsuario == idUsuario);
 

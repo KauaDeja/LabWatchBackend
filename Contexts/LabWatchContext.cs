@@ -317,6 +317,8 @@ namespace labware_webapi.Contexts
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
 
+                entity.Property(e => e.Ativo).HasColumnName("ativo");
+
                 entity.Property(e => e.CargaHoraria)
                     .HasColumnType("decimal(18, 0)")
                     .HasColumnName("cargaHoraria");

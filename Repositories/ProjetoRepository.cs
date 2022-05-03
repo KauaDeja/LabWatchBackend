@@ -68,7 +68,7 @@ namespace labware_webapi.Repositories
               
         public List<Projeto> VerMinhas(int idEquipe)
         {
-            return ctx.Projetos
+            return ctx.Projetos.Include(p => p.IdEquipeNavigation).ThenInclude(p => p.UsuarioEquipes)
                 .Select(c => new Projeto()
                 {
                     IdProjeto = c.IdProjeto,
@@ -81,8 +81,8 @@ namespace labware_webapi.Repositories
                     {
                         IdEquipe = c.IdEquipeNavigation.IdEquipe,
                         NomeEquipe = c.IdEquipeNavigation.NomeEquipe,
-                        HorasTrabalhadas = c.IdEquipeNavigation.HorasTrabalhadas
-
+                        HorasTrabalhadas = c.IdEquipeNavigation.HorasTrabalhadas,
+                        UsuarioEquipes = c.IdEquipeNavigation.UsuarioEquipes
                     },
                      IdClienteNavigation = new Cliente()
                      {
