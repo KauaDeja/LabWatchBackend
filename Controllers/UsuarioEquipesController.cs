@@ -47,17 +47,17 @@ namespace labware_webapi.Controllers
             }
         }
 
-        [HttpDelete("{idEquipe}")]
-        public IActionResult Deletar(int idEquipe)
+        [HttpDelete("{idUsuarioEquipe}")]
+        public IActionResult Deletar(int idUsuarioEquipe)
         {
             try
             {
-                _repository.Deletar(idEquipe);
+                _repository.Deletar(idUsuarioEquipe);
                 return StatusCode(204);
             }
             catch (Exception error)
             {
-                return BadRequest(error.Message);
+                return BadRequest(error);
             }
 
         }
