@@ -24,6 +24,7 @@ namespace labware_webapi.Domains
         public string Email { get; set; }
         public string Senha { get; set; }
         public string FotoUsuario { get; set; }
+        public bool? Ativo { get; set; }
 
         public virtual StatusUsuario IdStatusNavigation { get; set; }
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }
