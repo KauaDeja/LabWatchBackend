@@ -9,10 +9,10 @@ namespace labware_webapi.Interfaces
     public interface ITaskRepository
     {
         List<Task> ListarTodos();
-        List<Task> ListarMinhas(int idUsuario);
         void Cadastrar(Task novaTask);
         void Deletar(int idTask);
         void Atualizar(int idTask, Task taskAtualizada);
         Task BuscarPorId(int id);
+        public List<Task> VerMinhas(int idUsuario);
     }
 }
