@@ -76,5 +76,19 @@ namespace labware_webapi.Controllers
                 return BadRequest(erro);
             }
         }
+
+        [HttpGet("{idEquipe}")]
+        public IActionResult BuscarPorId(int idEquipe)
+        {
+            try
+            {
+                return Ok(_repository.Buscar(idEquipe));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
     }
 }
