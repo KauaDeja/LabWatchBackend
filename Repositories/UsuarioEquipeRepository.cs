@@ -2,6 +2,7 @@
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,7 +58,7 @@ namespace labware_webapi.Repositories
 
         public void MudarEquipe(int idUsuario, UsuarioEquipe EquipeAtualizada)
         {
-            UsuarioEquipe equipeBuscada = Buscar(EquipeAtualizada.IdusuarioEquipe);
+            UsuarioEquipe equipeBuscada = Buscar((Convert.ToInt32(EquipeAtualizada.IdEquipe)));
 
             Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(p => p.IdUsuario == idUsuario);
 
