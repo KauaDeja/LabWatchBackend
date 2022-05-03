@@ -36,6 +36,7 @@ namespace labware_webapi.Repositories
                 .Include(e => e.IdUsuarioNavigation)
                 .Select(e => new UsuarioEquipe()
                 {
+                    IdusuarioEquipe = e.IdusuarioEquipe,
                     IdEquipeNavigation = new Equipe()
                     {
                         NomeEquipe = e.IdEquipeNavigation.NomeEquipe,
@@ -48,7 +49,7 @@ namespace labware_webapi.Repositories
                         NomeUsuario = e.IdUsuarioNavigation.NomeUsuario,
                         SobreNome = e.IdUsuarioNavigation.SobreNome
                     }
-                    
+
                 })
                 .ToList();
         }
