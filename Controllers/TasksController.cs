@@ -101,5 +101,19 @@ namespace labware_webapi.Controllers
             }
 
         }
+
+
+        [HttpGet("Minhas/{idUsuario}")]
+        public IActionResult GetMyOwn(int idUsuario)
+        {
+            try
+            {
+                return Ok(_taskRepository.VerMinhas(idUsuario));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
     }
 }
