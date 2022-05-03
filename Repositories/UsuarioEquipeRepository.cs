@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Contexts;
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +13,7 @@ namespace labware_webapi.Repositories
 
         public UsuarioEquipe Buscar(int id)
         {
-            return ctx.UsuarioEquipes.FirstOrDefault(t => t.IdusuarioEquipe == id);
+            return ctx.UsuarioEquipes.Include(e => e.IdEquipeNavigation).Include(e => e.IdUsuarioNavigation).FirstOrDefault(t => t.IdusuarioEquipe == id);
         }
 
         public void Cadastrar(UsuarioEquipe novaEquipe)
@@ -30,7 +31,7 @@ namespace labware_webapi.Repositories
 
         public List<UsuarioEquipe> ListarTodos()
         {
-            return ctx.UsuarioEquipes.ToList();
+            return ctx.UsuarioEquipes.Include(e => e.IdEquipeNavigation).Include(e => e.IdUsuarioNavigation).ToList();
         }
 
         public void MudarEquipe(int idUsuario, UsuarioEquipe EquipeAtualizada)
