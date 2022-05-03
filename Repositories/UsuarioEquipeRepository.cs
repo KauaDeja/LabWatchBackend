@@ -39,6 +39,7 @@ namespace labware_webapi.Repositories
                     IdusuarioEquipe = e.IdusuarioEquipe,
                     IdEquipeNavigation = new Equipe()
                     {
+                        IdEquipe = e.IdEquipeNavigation.IdEquipe,
                         NomeEquipe = e.IdEquipeNavigation.NomeEquipe,
                         HorasTrabalhadas = e.IdEquipeNavigation.HorasTrabalhadas,
                         UsuarioEquipes = e.IdEquipeNavigation.UsuarioEquipes
