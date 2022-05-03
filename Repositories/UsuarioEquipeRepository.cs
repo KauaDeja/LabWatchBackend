@@ -38,6 +38,8 @@ namespace labware_webapi.Repositories
                 .Select(e => new UsuarioEquipe()
                 {
                     IdusuarioEquipe = e.IdusuarioEquipe,
+                    IdEquipe = e.IdEquipe,
+                    IdUsuario = e.IdUsuario,
                     IdEquipeNavigation = new Equipe()
                     {
                         IdEquipe = e.IdEquipeNavigation.IdEquipe,
