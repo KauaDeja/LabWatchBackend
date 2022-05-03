@@ -13,7 +13,7 @@ namespace labware_webapi.Repositories
 
         public UsuarioEquipe Buscar(int id)
         {
-            return ctx.UsuarioEquipes.Include(e => e.IdEquipeNavigation).Include(e => e.IdUsuarioNavigation).FirstOrDefault(t => t.IdusuarioEquipe == id);
+            return ctx.UsuarioEquipes.FirstOrDefault(t => t.IdusuarioEquipe == id);
         }
 
         public void Cadastrar(UsuarioEquipe novaEquipe)
