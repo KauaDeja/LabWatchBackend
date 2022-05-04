@@ -93,7 +93,7 @@ namespace labware_webapi.Repositories
                         DataCadastro = c.IdClienteNavigation.DataCadastro
                     },
                 })
-                .Where(p => p.IdEquipeNavigation.UsuarioEquipes.Single().IdUsuarioNavigation.IdUsuario == idUsuario)
+                .Where(p => p.IdEquipeNavigation.UsuarioEquipes.FirstOrDefault(p => p.IdUsuario == idUsuario).IdUsuario == idUsuario)
                 .ToList();
         }
 

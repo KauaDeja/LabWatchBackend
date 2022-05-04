@@ -146,14 +146,13 @@ namespace labware_webapi.Controllers
              }*/
 
         
-        [HttpGet("Minhas/{idEquipe}")]
-        public IActionResult GetMyOwn(int idEquipe)
+        [HttpGet("Minhas/{idUsuario}")]
+        public IActionResult GetMyOwn(int idUsuario)
         {
             try
             {
      
-
-                return Ok(_repository.VerMinhas(idEquipe));
+                return Ok(_repository.VerMinhas(idUsuario));
             }
             catch (Exception erro)
             {
