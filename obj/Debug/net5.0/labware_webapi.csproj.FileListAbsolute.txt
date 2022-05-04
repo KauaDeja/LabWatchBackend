@@ -158,3 +158,4 @@ C:\Users\Dell\Desktop\LabWatch_API\obj\Debug\net5.0\ref\labware_webapi.dll
 C:\Users\Dell\Desktop\LabWatch_API\obj\Debug\net5.0\labware_webapi.xml
 C:\Users\Dell\Desktop\LabWatch_API\obj\Debug\net5.0\labware_webapi.pdb
 C:\Users\Dell\Desktop\LabWatch_API\obj\Debug\net5.0\labware_webapi.genruntimeconfig.cache
+C:\Users\41557163804.INFOSCS\Desktop\LabWatch_API\bin\Debug\net5.0\StaticFiles\Images\cd0daaac-9ca8-429b-b4b1-59aba350e96c.png

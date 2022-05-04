@@ -65,10 +65,10 @@ namespace labware_webapi.Repositories
         {
             return ctx.Projetos.Include(p => p.IdClienteNavigation).ToList();
         }
-              
+
         public List<Projeto> VerMinhas(int idUsuario)
         {
-            return ctx.Projetos.Include(p => p.IdEquipeNavigation).ThenInclude(p => p.UsuarioEquipes as UsuarioEquipe).ThenInclude(p => p.IdUsuarioNavigation)
+            return ctx.Projetos.Include(p => p.IdEquipeNavigation).ThenInclude(p => p.UsuarioEquipes).ThenInclude(p => p.IdUsuarioNavigation)
                 .Select(c => new Projeto()
                 {
                     IdProjeto = c.IdProjeto,
@@ -82,21 +82,19 @@ namespace labware_webapi.Repositories
                         IdEquipe = c.IdEquipeNavigation.IdEquipe,
                         NomeEquipe = c.IdEquipeNavigation.NomeEquipe,
                         HorasTrabalhadas = c.IdEquipeNavigation.HorasTrabalhadas,
-                        UsuarioEquipe = new UsuarioEquipe()
-                        {
-
-                        }
-                    },                    
-                     IdClienteNavigation = new Cliente()
-                     {
-                         IdCliente = c.IdClienteNavigation.IdCliente,
-                         NomeCliente  = c.IdClienteNavigation.NomeCliente,
-                         Descricao = c.IdClienteNavigation.Descricao,
-                         FotoCliente  = c.IdClienteNavigation.FotoCliente,
-                         DataCadastro = c.IdClienteNavigation.DataCadastro
-                     },
+                        UsuarioEquipes = c.IdEquipeNavigation.UsuarioEquipes
+                    },
+                    IdClienteNavigation = new Cliente()
+                    {
+                        IdCliente = c.IdClienteNavigation.IdCliente,
+                        NomeCliente = c.IdClienteNavigation.NomeCliente,
+                        Descricao = c.IdClienteNavigation.Descricao,
+                        FotoCliente = c.IdClienteNavigation.FotoCliente,
+                        DataCadastro = c.IdClienteNavigation.DataCadastro
+                    },
                 })
-                .Where(p => p.IdEquipeNavigation.UsuarioEquipes.IdUsuarioNavigation == idUsuario ).ToList();
+                .Where(p => p.IdEquipeNavigation.UsuarioEquipes.Single().IdUsuarioNavigation.IdUsuario == idUsuario)
+                .ToList();
         }
 
 
