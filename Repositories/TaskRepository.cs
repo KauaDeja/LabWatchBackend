@@ -84,6 +84,24 @@ namespace labware_webapi.Repositories
                           Email = c.IdUsuarioNavigation.Email,
                           Senha = c.IdUsuarioNavigation.Senha,
 
+                      }, IdProjetoNavigation = new Projeto()
+                      {
+                          IdProjeto = c.IdProjetoNavigation.IdProjeto,
+                          IdStatusProjeto = c.IdProjetoNavigation.IdStatusProjeto,
+                          TituloProjeto = c.IdProjetoNavigation.TituloProjeto,
+                          DataInicio = c.IdProjetoNavigation.DataInicio,
+                          DataConclusao = c.IdProjetoNavigation.DataConclusao,
+                          Descricao = c.IdProjetoNavigation.Descricao,
+                          IdEquipe = c.IdProjetoNavigation.IdEquipe,
+                          IdCliente = c.IdProjetoNavigation.IdCliente,
+                      }, IdTagNavigation = new Tag()
+                      {
+                          IdTag = c.IdTagNavigation.IdTag,
+                          TituloTag =  c.IdTagNavigation.TituloTag,
+                      }, IdStatusTaskNavigation = new StatusTask()
+                      {
+                          IdStatusTask = c.IdStatusTaskNavigation.IdStatusTask,
+                          StatusTask1 = c.IdStatusTaskNavigation.StatusTask1,
                       }
                   })
                   .Where(p => p.IdUsuarioNavigation.IdUsuario == idUsuario).ToList();
