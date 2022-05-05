@@ -113,6 +113,21 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [HttpPatch]
+        public IActionResult AprovarRecusar(int idUsuario, bool ativo)
+        {
+            try
+            {
+                _usuarioRepository.AprovarRecusar(idUsuario, ativo);
+
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
         /*
                 [HttpPost("imagem/dir")]
                 public IActionResult postDIR(IFormFile arquivo)
