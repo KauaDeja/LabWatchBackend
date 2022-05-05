@@ -199,7 +199,7 @@ namespace labware_webapi.Contexts
 
                 entity.Property(e => e.IdStatusTask).HasColumnName("idStatusTask");
 
-                entity.Property(e => e.StatusTask1)
+                entity.Property(e => e.StatusTaskE)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false)
