@@ -63,6 +63,7 @@ namespace labware_webapi.Repositories
         public List<Task> VerMinhas(int idUsuario)
         {
             return ctx.Tasks
+                .Include(p => p.IdProjetoNavigation).Include(s => s.IdStatusTaskNavigation).Include(t => t.IdTagNavigation)
                   .Select(c => new Task()
                   {
                       IdTask = c.IdTask,
@@ -72,6 +73,22 @@ namespace labware_webapi.Repositories
                       TituloTask = c.TituloTask,
                       Descricao = c.Descricao,
                       TempoTrabalho = c.TempoTrabalho,
+                      IdProjetoNavigation = new Projeto()
+                      {
+                          IdProjeto = c.IdProjetoNavigation.IdProjeto,
+                          IdStatusProjeto = c.IdProjetoNavigation.IdStatusProjeto,
+                          IdEquipe = c.IdProjetoNavigation.IdEquipe,
+                          IdCliente = c.IdProjetoNavigation.IdCliente,
+                          TituloProjeto = c.IdProjetoNavigation.TituloProjeto,
+                          DataInicio = c.IdProjetoNavigation.DataInicio,
+                          DataConclusao = c.IdProjetoNavigation.DataConclusao,
+                          Descricao = c.IdProjetoNavigation.Descricao,
+                      },       
+                      IdTagNavigation = new Tag()
+                      {
+                          IdTag = c.IdTagNavigation.IdTag,
+                          TituloTag = c.IdTagNavigation.TituloTag,
+                      },
                       IdUsuarioNavigation = new Usuario()
                       {
                           IdUsuario = c.IdUsuarioNavigation.IdUsuario,
@@ -84,9 +101,9 @@ namespace labware_webapi.Repositories
                           Email = c.IdUsuarioNavigation.Email,
                           Senha = c.IdUsuarioNavigation.Senha,
 
-                      }
-                  })
-                  .Where(p => p.IdUsuarioNavigation.IdUsuario == idUsuario).ToList();
+                      },
+                   
+                  }).Where(p => p.IdUsuarioNavigation.IdUsuario == idUsuario).ToList();
         }
     
 

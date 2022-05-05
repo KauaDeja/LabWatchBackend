@@ -13,7 +13,7 @@ namespace labware_webapi.Domains
         }
 
         public int IdStatusTask { get; set; }
-        public string StatusTask1 { get; set; }
+        public string StatusTaskE { get; set; }
 
         public virtual ICollection<Task> Tasks { get; set; }
     }
