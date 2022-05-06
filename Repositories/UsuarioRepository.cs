@@ -62,6 +62,7 @@ namespace labware_webapi.Repositories
                 usuarioBuscado.CargaHoraria = usuarioAtualizado.CargaHoraria;
                 usuarioBuscado.HorasTrabalhadas = usuarioAtualizado.HorasTrabalhadas;
                 usuarioBuscado.Email = usuarioAtualizado.Email;
+                usuarioBuscado.FotoUsuario = usuarioAtualizado.FotoUsuario;
                 ctx.Usuarios.Update(usuarioBuscado);
                 ctx.SaveChanges();
             }
