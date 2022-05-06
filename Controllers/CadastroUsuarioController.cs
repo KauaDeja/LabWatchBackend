@@ -2,6 +2,7 @@
 using labware_webapi.Domains;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Patrimonio.Utils;
 using System;
 using System.Collections.Generic;
@@ -40,13 +41,72 @@ namespace labware_webapi.Controllers
 
             usuario.FotoUsuario = uploadResultado;
             #endregion
-
             _context.Usuarios.Add(usuario);
+           
             await _context.SaveChangesAsync();
 
             return Created("Usuario", usuario);
 
 
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<Usuario>> PostUser([FromForm] Usuario usuarioAtualizado, IFormFile arquivo, int id)
+        {
+            if (id != usuarioAtualizado.IdUsuario)
+            {
+                return BadRequest();
+            }
+
+            /////////////////////////
+            
+           
+            /////////////////////////
+           
+
+           
+
+            try
+            {
+                #region 
+                string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
+                string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas);
+
+                if (uploadResultado == "")
+                {
+                    return BadRequest("Arquivo não encontrado");
+                }
+
+                if (uploadResultado == "Extensão não permitida")
+                {
+                    return BadRequest("Extensão de arquivo não permitida");
+                }
+
+                usuarioAtualizado.FotoUsuario = uploadResultado;
+                #endregion
+
+                _context.Entry(usuarioAtualizado).State = EntityState.Modified;
+
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UsuarioExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool UsuarioExists(int id)
+        {
+            return _context.Usuarios.Any(e => e.IdUsuario == id);
         }
     }
 }
