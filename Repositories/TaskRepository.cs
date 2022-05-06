@@ -89,6 +89,11 @@ namespace labware_webapi.Repositories
                           IdTag = c.IdTagNavigation.IdTag,
                           TituloTag = c.IdTagNavigation.TituloTag,
                       },
+                      IdStatusTaskNavigation = new StatusTask()
+                      {
+                          IdStatusTask = c.IdStatusTaskNavigation.IdStatusTask,
+                          StatusTaskE = c.IdStatusTaskNavigation.StatusTaskE,
+                      },
                       IdUsuarioNavigation = new Usuario()
                       {
                           IdUsuario = c.IdUsuarioNavigation.IdUsuario,
