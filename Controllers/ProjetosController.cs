@@ -185,5 +185,20 @@ namespace labware_webapi.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpPatch("MudarSituacao/{idProjeto}")]
+        public IActionResult MudarSituacao(int idProjeto, int statusProjeto)
+        {
+            try
+            {
+                _repository.MudarSituacao(statusProjeto, idProjeto);
+
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
     }
 }

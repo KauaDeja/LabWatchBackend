@@ -66,6 +66,34 @@ namespace labware_webapi.Repositories
             return ctx.Projetos.Include(p => p.IdClienteNavigation).ToList();
         }
 
+        public void MudarSituacao(int statusProjeto, int idProjeto)
+        {
+            Projeto projetoEncontrado = ctx.Projetos.FirstOrDefault(x => x.IdProjeto == idProjeto);
+
+            if (projetoEncontrado != null)
+            {
+                switch (statusProjeto)
+                {
+                    case 1:
+                        projetoEncontrado.IdStatusProjeto = 1;
+                            break;
+                    case 2:
+                        projetoEncontrado.IdStatusProjeto = 2;
+                            break;
+                    case 3:
+                        projetoEncontrado.IdStatusProjeto = 3;
+                            break;
+                    default:
+                        projetoEncontrado.IdStatusProjeto = projetoEncontrado.IdStatusProjeto;
+                        break;
+                }
+
+                ctx.Projetos.Update(projetoEncontrado);
+
+                ctx.SaveChanges();
+            }
+        }
+
         public List<Projeto> VerMinhas(int idUsuario)
         {
             return ctx.Projetos.Include(p => p.IdEquipeNavigation).ThenInclude(p => p.UsuarioEquipes).ThenInclude(p => p.IdUsuarioNavigation)
