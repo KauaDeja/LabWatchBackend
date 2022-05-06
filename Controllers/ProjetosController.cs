@@ -186,7 +186,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-        [HttpPatch("MudarSituacao/{idProjeto}")]
+        [HttpPatch("MudarSituacao")]
         public IActionResult MudarSituacao(int idProjeto, int statusProjeto)
         {
             try
