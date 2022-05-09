@@ -7873,19 +7873,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\47499026833.INFOSCS\\.nuget\\packages\\": {}
+    "C:\\Users\\39965709882\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\47499026833.INFOSCS\\Desktop\\LabWatch_API\\labware_webapi.csproj",
+      "projectUniqueName": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj",
       "projectName": "labware_webapi",
-      "projectPath": "C:\\Users\\47499026833.INFOSCS\\Desktop\\LabWatch_API\\labware_webapi.csproj",
-      "packagesPath": "C:\\Users\\47499026833.INFOSCS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\47499026833.INFOSCS\\Desktop\\LabWatch_API\\obj\\",
+      "projectPath": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj",
+      "packagesPath": "C:\\Users\\39965709882\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\47499026833.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\39965709882\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7972,7 +7972,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

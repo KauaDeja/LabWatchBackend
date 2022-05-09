@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
+using labware_webapi.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -54,12 +55,16 @@ namespace labware_webapi.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Task task)
         {
+            bool tituloTask = Moderador.ModerarTexto(task.TituloTask);
+            bool descricao = Moderador.ModerarTexto(task.Descricao);
+
             try
             {
-                if (task == null)
+                if (tituloTask || descricao)
                 {
-                    return BadRequest("Não foi possível cadastrar");
+                    return BadRequest("Texto inaproripado, por favor reescreva sem usar palavras inadequadas ou dados sensíveis");
                 };
+                
 
                 _taskRepository.Cadastrar(task);
                 return StatusCode(201);
