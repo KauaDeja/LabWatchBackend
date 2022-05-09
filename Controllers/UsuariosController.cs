@@ -58,7 +58,7 @@ namespace labware_webapi.Controllers
             }
         }*/
 
-        [HttpPut("{idUsuario}"]
+        [HttpPut("{idUsuario}")]
         public IActionResult Atualizar(int idUsuario, Usuario usuario)
         {
             try
