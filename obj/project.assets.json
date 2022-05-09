@@ -7873,25 +7873,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\41557163804.INFOSCS\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\39965709882\\.nuget\\packages\\": {}
->>>>>>> e6890c165094653de22d6d98f0803e9dd77a9edd
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\41557163804.INFOSCS\\Desktop\\LabWatch_API\\labware_webapi.csproj",
-      "projectName": "labware_webapi",
-      "projectPath": "C:\\Users\\41557163804.INFOSCS\\Desktop\\LabWatch_API\\labware_webapi.csproj",
-      "packagesPath": "C:\\Users\\41557163804.INFOSCS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\41557163804.INFOSCS\\Desktop\\LabWatch_API\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\41557163804.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
       "projectUniqueName": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj",
       "projectName": "labware_webapi",
       "projectPath": "C:\\Users\\39965709882\\Desktop\\LabWatch_API\\labware_webapi.csproj",
@@ -7900,7 +7886,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\39965709882\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> e6890c165094653de22d6d98f0803e9dd77a9edd
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7987,12 +7972,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
-=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
->>>>>>> e6890c165094653de22d6d98f0803e9dd77a9edd
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\39965709882\\Desktop\\LabWatch_API\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

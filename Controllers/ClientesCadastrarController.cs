@@ -1,5 +1,6 @@
 ﻿using labware_webapi.Contexts;
 using labware_webapi.Domains;
+using labware_webapi.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Patrimonio.Utils;
@@ -40,7 +41,17 @@ namespace labware_webapi.Controllers
 
             cliente.FotoCliente = uploadResultado;
             #endregion
-          
+            #region Moderador de conteúdo
+            bool nomeCliente = Moderador.ModerarTexto(cliente.NomeCliente);
+            bool descricao = Moderador.ModerarTexto(cliente.Descricao);
+
+            if (nomeCliente || descricao)
+            {
+                return BadRequest("Texto inaproripado, por favor reescreva sem usar palavras inadequadas ou dados sensíveis.");
+            }
+
+            #endregion
+
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
