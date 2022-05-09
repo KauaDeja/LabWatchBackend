@@ -34,7 +34,7 @@ namespace labware_webapi.Repositories
         {
             return ctx.UsuarioEquipes
                 .Include(e => e.IdEquipeNavigation)
-                .Include(e => e.IdUsuarioNavigation)
+                .Include(e => e.IdUsuarioNavigation).ThenInclude(e => e.Tasks)
                 .Select(e => new UsuarioEquipe()
                 {
                     IdusuarioEquipe = e.IdusuarioEquipe,
@@ -51,7 +51,8 @@ namespace labware_webapi.Repositories
                     {
                         IdUsuario = e.IdUsuarioNavigation.IdUsuario,
                         NomeUsuario = e.IdUsuarioNavigation.NomeUsuario,
-                        SobreNome = e.IdUsuarioNavigation.SobreNome
+                        SobreNome = e.IdUsuarioNavigation.SobreNome,
+                        Tasks = e.IdUsuarioNavigation.Tasks
                     }
 
                 })
