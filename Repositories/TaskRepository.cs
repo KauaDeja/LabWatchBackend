@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Contexts;
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
+using labware_webapi.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -40,8 +41,11 @@ namespace labware_webapi.Repositories
 
         public void Cadastrar(Task novaTask)
         {
+           
+
             ctx.Tasks.Add(novaTask);
             ctx.SaveChanges();
+
         }
 
         public void Deletar(int idTask)
