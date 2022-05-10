@@ -182,7 +182,7 @@ namespace labware_webapi.Controllers
             }
             catch (Exception error)
             {
-                return BadRequest(error.Message);
+                return BadRequest(error);
             }
         }
 
