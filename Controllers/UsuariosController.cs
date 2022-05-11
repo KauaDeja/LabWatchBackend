@@ -113,7 +113,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-        [HttpPatch]
+        [HttpPatch("{idUsuario}")]
         public IActionResult AprovarRecusar(int idUsuario, bool ativo)
         {
             try
