@@ -16,20 +16,38 @@ namespace labware_webapi.Repositories
     {
         LabWatchContext ctx = new LabWatchContext();
 
-    /*    public string AtualizarFotoDir(int id_usuario)
+        public void AprovarRecusar(int idUsuario, bool ativo)
         {
-            string nome_arquivo = id_usuario.ToString() + ".png";
+            Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(i => i.IdUsuario == idUsuario);
 
-            string caminho = Path.Combine("perfil", nome_arquivo);
-
-            if (File.Exists(caminho))
+            if (ativo)
             {
-                byte[] bytes_arquivo = File.ReadAllBytes(caminho);
-                return Convert.ToBase64String(bytes_arquivo);
+                usuarioBuscado.Ativo = true;
+            }
+            else
+            {
+                usuarioBuscado.Ativo = false;
             }
 
-            return null;
-        }*/
+            ctx.Update(usuarioBuscado);
+
+            ctx.SaveChanges();
+        }
+
+        /*    public string AtualizarFotoDir(int id_usuario)
+            {
+                string nome_arquivo = id_usuario.ToString() + ".png";
+
+                string caminho = Path.Combine("perfil", nome_arquivo);
+
+                if (File.Exists(caminho))
+                {
+                    byte[] bytes_arquivo = File.ReadAllBytes(caminho);
+                    return Convert.ToBase64String(bytes_arquivo);
+                }
+
+                return null;
+            }*/
 
         public void AtualizarPeloId(int idUsuario, Usuario usuarioAtualizado)
         {
@@ -44,6 +62,7 @@ namespace labware_webapi.Repositories
                 usuarioBuscado.CargaHoraria = usuarioAtualizado.CargaHoraria;
                 usuarioBuscado.HorasTrabalhadas = usuarioAtualizado.HorasTrabalhadas;
                 usuarioBuscado.Email = usuarioAtualizado.Email;
+                usuarioBuscado.FotoUsuario = usuarioAtualizado.FotoUsuario;
                 ctx.Usuarios.Update(usuarioBuscado);
                 ctx.SaveChanges();
             }

@@ -146,14 +146,13 @@ namespace labware_webapi.Controllers
              }*/
 
         
-        [HttpGet("Minhas/{idEquipe}")]
-        public IActionResult GetMyOwn(int idEquipe)
+        [HttpGet("Minhas/{idUsuario}")]
+        public IActionResult GetMyOwn(int idUsuario)
         {
             try
             {
      
-
-                return Ok(_repository.VerMinhas(idEquipe));
+                return Ok(_repository.VerMinhas(idUsuario));
             }
             catch (Exception erro)
             {
@@ -183,7 +182,22 @@ namespace labware_webapi.Controllers
             }
             catch (Exception error)
             {
-                return BadRequest(error.Message);
+                return BadRequest(error);
+            }
+        }
+
+        [HttpPatch("MudarSituacao")]
+        public IActionResult MudarSituacao(int idProjeto, int statusProjeto)
+        {
+            try
+            {
+                _repository.MudarSituacao(statusProjeto, idProjeto);
+
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
             }
         }
     }

@@ -1,9 +1,5 @@
 ﻿using labware_webapi.Domains;
-using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace labware_webapi.Interfaces
 {
@@ -15,7 +11,7 @@ namespace labware_webapi.Interfaces
         void Deletar(int idProjeto);
         void Atualizar(Projeto projetoAtualizado, int idProjeto);
         void AtualizarFoto(Projeto projetoAtualizado, int idProjeto);
-
-        public List<Projeto> VerMinhas(int idEquipe);
+        public List<Projeto> VerMinhas(int idUsuario);
+        void MudarSituacao(int statusProjeto, int idProjeto);
     }
 }

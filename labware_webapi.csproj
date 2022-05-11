@@ -31,6 +31,12 @@
     <None Update="StaticFiles\Images\59876b4f-d9e7-4a69-bc44-79f738e5d236.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="StaticFiles\Images\716f4b69-5131-498b-863f-95970a23bebe.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticFiles\Images\cd0daaac-9ca8-429b-b4b1-59aba350e96c.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="StaticFiles\Images\ff5e87d3-4320-46e3-bdb5-eb85816471b9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

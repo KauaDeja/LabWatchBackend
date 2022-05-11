@@ -58,7 +58,7 @@ namespace labware_webapi.Controllers
             }
         }*/
 
-        [HttpPut]
+        [HttpPut("{idUsuario}")]
         public IActionResult Atualizar(int idUsuario, Usuario usuario)
         {
             try
@@ -110,6 +110,21 @@ namespace labware_webapi.Controllers
             catch (Exception error)
             {
                 return BadRequest(error.Message);
+            }
+        }
+
+        [HttpPatch]
+        public IActionResult AprovarRecusar(int idUsuario, bool ativo)
+        {
+            try
+            {
+                _usuarioRepository.AprovarRecusar(idUsuario, ativo);
+
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
             }
         }
 
