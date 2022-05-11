@@ -75,6 +75,7 @@ namespace labware_webapi.Repositories
                       TituloTask = c.TituloTask,
                       Descricao = c.Descricao,
                       TempoTrabalho = c.TempoTrabalho,
+                      Comentarios = c.Comentarios,
                       IdProjetoNavigation = new Projeto()
                       {
                           IdProjeto = c.IdProjetoNavigation.IdProjeto,
