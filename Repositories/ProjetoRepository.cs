@@ -27,6 +27,8 @@ namespace labware_webapi.Repositories
                 projBuscado.TituloProjeto = projetoAtualizado.TituloProjeto;
                 projBuscado.DataInicio = projetoAtualizado.DataInicio;
                 projBuscado.DataConclusao = projetoAtualizado.DataConclusao;
+                projBuscado.Descricao = projetoAtualizado.Descricao;
+                projBuscado.IdCliente = projetoAtualizado.IdCliente;
                 ctx.Projetos.Update(projBuscado);
                 ctx.SaveChangesAsync();
             }
