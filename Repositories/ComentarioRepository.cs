@@ -2,6 +2,7 @@
 using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Utils;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,12 @@ namespace labware_webapi.Repositories
 
         public void Cadastrar(Comentario novoComentario)
         {
-                ctx.Comentarios.Add(novoComentario);
+            ctx.Comentarios.Add(novoComentario);
                
-
-
             if (novoComentario != null)
             {
                 ctx.SaveChanges();
             }
-
 
         }
 
@@ -40,7 +38,7 @@ namespace labware_webapi.Repositories
 
         public List<Comentario> ListarTodos()
         {
-            return ctx.Comentarios.ToList();
+            return ctx.Comentarios.Include(e => e.IdUsuarioNavigation).Include(e => e.IdTaskNavigation).ToList();
         }
     }
 }

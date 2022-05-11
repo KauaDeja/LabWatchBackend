@@ -173,7 +173,7 @@ namespace labware_webapi.Controllers
 
                 bool titulo = Moderador.ModerarTexto(projeto.TituloProjeto);
                 bool descricao = Moderador.ModerarTexto(projeto.Descricao);
-                if (titulo)
+                if (titulo || descricao)
                 {
                     return BadRequest("Texto inaproripado, por favor reescreva sem usar palavras inadequadas ou dados sensíveis.");
                 }

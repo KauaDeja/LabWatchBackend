@@ -41,8 +41,6 @@ namespace labware_webapi.Repositories
 
         public void Cadastrar(Task novaTask)
         {
-           
-
             ctx.Tasks.Add(novaTask);
             ctx.SaveChanges();
 
@@ -61,13 +59,13 @@ namespace labware_webapi.Repositories
 
         public List<Task> ListarTodos()
         {
-            return ctx.Tasks.Include(p => p.IdProjetoNavigation).Include(c => c.IdStatusTaskNavigation).Include(d => d.IdTagNavigation).ToList();
+            return ctx.Tasks.Include(p => p.IdProjetoNavigation).Include(c => c.IdStatusTaskNavigation).Include(d => d.IdTagNavigation).Include(e => e.Comentarios).ToList();
         }
 
         public List<Task> VerMinhas(int idUsuario)
         {
             return ctx.Tasks
-                .Include(p => p.IdProjetoNavigation).Include(s => s.IdStatusTaskNavigation).Include(t => t.IdTagNavigation)
+                .Include(p => p.IdProjetoNavigation).Include(s => s.IdStatusTaskNavigation).Include(t => t.IdTagNavigation).Include(u => u.Comentarios).ThenInclude(v => v.IdUsuarioNavigation)
                   .Select(c => new Task()
                   {
                       IdTask = c.IdTask,
@@ -77,6 +75,7 @@ namespace labware_webapi.Repositories
                       TituloTask = c.TituloTask,
                       Descricao = c.Descricao,
                       TempoTrabalho = c.TempoTrabalho,
+                      Comentarios = c.Comentarios,
                       IdProjetoNavigation = new Projeto()
                       {
                           IdProjeto = c.IdProjetoNavigation.IdProjeto,
