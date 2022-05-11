@@ -37,6 +37,11 @@ namespace labware_webapi.Controllers
                         return NotFound("E-mail ou senha inválidos!");
                     }
 
+                    if (usuarioBuscado.Ativo == false)
+                    {
+                        return BadRequest("Você não tem permissão para entrar na aplicação");
+                    }
+
                     var MinhaClaim = new[]
                     {
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
