@@ -65,7 +65,7 @@ namespace labware_webapi.Repositories
         public List<Task> VerMinhas(int idUsuario)
         {
             return ctx.Tasks
-                .Include(p => p.IdProjetoNavigation).Include(s => s.IdStatusTaskNavigation).Include(t => t.IdTagNavigation)
+                .Include(p => p.IdProjetoNavigation).Include(s => s.IdStatusTaskNavigation).Include(t => t.IdTagNavigation).Include(u => u.Comentarios).ThenInclude(v => v.IdUsuarioNavigation)
                   .Select(c => new Task()
                   {
                       IdTask = c.IdTask,
