@@ -6,7 +6,6 @@ using labware_webapi.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Patrimonio.Utils;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -65,21 +64,6 @@ namespace labware_webapi.Controllers
             try
             {
                 _usuarioRepository.AtualizarPeloId(idUsuario, usuario);
-
-                string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
-                string uploadResultado = Upload.UploadFile(usuario.FotoUsuario, extensoesPermitidas);
-
-                if (uploadResultado == "")
-                {
-                    return BadRequest("Arquivo não encontrado");
-                }
-
-                if (uploadResultado == "Extensão não permitida")
-                {
-                    return BadRequest("Extensão de arquivo não permitida");
-                }
-
-                usuarioAtualizado.FotoUsuario = uploadResultado;
                 return StatusCode(204);
             }
             catch (Exception error)
