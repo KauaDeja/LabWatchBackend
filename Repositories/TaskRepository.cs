@@ -113,7 +113,19 @@ namespace labware_webapi.Repositories
                    
                   }).Where(p => p.IdUsuarioNavigation.IdUsuario == idUsuario).ToList();
         }
-    
 
-}
+        public void AlterarResponsavel(int idUsuario, Task task)
+        {
+            Task taskBuscada = ctx.Tasks.FirstOrDefault(c => c.IdTask == task.IdTask);
+            Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(c => c.IdUsuario == idUsuario);
+            if (taskBuscada != null)
+            {
+                taskBuscada.IdUsuario = usuarioBuscado.IdUsuario;
+
+                ctx.Tasks.Update(taskBuscada);
+
+                ctx.SaveChanges();
+            }
+        }
+    }
 }

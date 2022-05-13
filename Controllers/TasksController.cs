@@ -120,5 +120,19 @@ namespace labware_webapi.Controllers
                 return BadRequest(erro);
             }
         }
+
+        [HttpPatch("{idUsuario}")]
+        public IActionResult AlterarResponsavel(int idUsuario, Task task)
+        {
+            try
+            {
+                _taskRepository.AlterarResponsavel(idUsuario, task);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
     }
 }
