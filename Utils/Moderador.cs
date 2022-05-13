@@ -8,8 +8,8 @@ namespace labware_webapi.Utils
     public static class Moderador
     {   
         // Credenciais necessárias para usar o recurso da Azure.
-        private static readonly string SubscriptionKey = "7c705273e140447b910863c512123a3c";
-        private static readonly string Endpoint = "https://labwatch-contentmoderator.cognitiveservices.azure.com/";
+        private static readonly string SubscriptionKey = "230a4eb8db9d4bb8b8d0a2be0d9c816e";
+        private static readonly string Endpoint = "https://ialabwatch.cognitiveservices.azure.com/";
 
         public static ContentModeratorClient Authenticate(string key, string endpoint)
         {
