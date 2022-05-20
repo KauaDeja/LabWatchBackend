@@ -14,5 +14,6 @@ namespace labware_webapi.Interfaces
         void Atualizar(int idTask, Task taskAtualizada);
         Task BuscarPorId(int id);
         public List<Task> VerMinhas(int idUsuario);
+        void AlterarResponsavel(int idUsuario, Task task);
     }
 }

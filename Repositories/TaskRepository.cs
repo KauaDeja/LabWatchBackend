@@ -59,7 +59,54 @@ namespace labware_webapi.Repositories
 
         public List<Task> ListarTodos()
         {
-            return ctx.Tasks.Include(p => p.IdProjetoNavigation).Include(c => c.IdStatusTaskNavigation).Include(d => d.IdTagNavigation).Include(e => e.Comentarios).ToList();
+            return ctx.Tasks
+                .Include(p => p.IdProjetoNavigation).Include(s => s.IdStatusTaskNavigation).Include(t => t.IdTagNavigation).Include(u => u.Comentarios).ThenInclude(v => v.IdUsuarioNavigation)
+                  .Select(c => new Task()
+                  {
+                      IdTask = c.IdTask,
+                      IdStatusTask = c.IdStatusTask,
+                      IdProjeto = c.IdProjeto,
+                      IdUsuario = c.IdUsuario,
+                      TituloTask = c.TituloTask,
+                      Descricao = c.Descricao,
+                      TempoTrabalho = c.TempoTrabalho,
+                      Comentarios = c.Comentarios,
+                      IdProjetoNavigation = new Projeto()
+                      {
+                          IdProjeto = c.IdProjetoNavigation.IdProjeto,
+                          IdStatusProjeto = c.IdProjetoNavigation.IdStatusProjeto,
+                          IdEquipe = c.IdProjetoNavigation.IdEquipe,
+                          IdCliente = c.IdProjetoNavigation.IdCliente,
+                          TituloProjeto = c.IdProjetoNavigation.TituloProjeto,
+                          DataInicio = c.IdProjetoNavigation.DataInicio,
+                          DataConclusao = c.IdProjetoNavigation.DataConclusao,
+                          Descricao = c.IdProjetoNavigation.Descricao,
+                      },
+                      IdTagNavigation = new Tag()
+                      {
+                          IdTag = c.IdTagNavigation.IdTag,
+                          TituloTag = c.IdTagNavigation.TituloTag,
+                      },
+                      IdStatusTaskNavigation = new StatusTask()
+                      {
+                          IdStatusTask = c.IdStatusTaskNavigation.IdStatusTask,
+                          StatusTaskE = c.IdStatusTaskNavigation.StatusTaskE,
+                      },
+                      IdUsuarioNavigation = new Usuario()
+                      {
+                          IdUsuario = c.IdUsuarioNavigation.IdUsuario,
+                          IdTipoUsuario = c.IdUsuarioNavigation.IdTipoUsuario,
+                          IdStatus = c.IdUsuarioNavigation.IdStatus,
+                          NomeUsuario = c.IdUsuarioNavigation.NomeUsuario,
+                          SobreNome = c.IdUsuarioNavigation.SobreNome,
+                          CargaHoraria = c.IdUsuarioNavigation.CargaHoraria,
+                          HorasTrabalhadas = c.IdUsuarioNavigation.HorasTrabalhadas,
+                          Email = c.IdUsuarioNavigation.Email,
+                          Senha = c.IdUsuarioNavigation.Senha,
+
+                      },
+
+                  }).ToList();
         }
 
         public List<Task> VerMinhas(int idUsuario)
@@ -113,7 +160,19 @@ namespace labware_webapi.Repositories
                    
                   }).Where(p => p.IdUsuarioNavigation.IdUsuario == idUsuario).ToList();
         }
-    
 
-}
+        public void AlterarResponsavel(int idUsuario, Task task)
+        {
+            Task taskBuscada = ctx.Tasks.FirstOrDefault(c => c.IdTask == task.IdTask);
+            Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(c => c.IdUsuario == idUsuario);
+            if (taskBuscada != null)
+            {
+                taskBuscada.IdUsuario = usuarioBuscado.IdUsuario;
+
+                ctx.Tasks.Update(taskBuscada);
+
+                ctx.SaveChanges();
+            }
+        }
+    }
 }

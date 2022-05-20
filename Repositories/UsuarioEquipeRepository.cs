@@ -53,7 +53,9 @@ namespace labware_webapi.Repositories
                         NomeUsuario = e.IdUsuarioNavigation.NomeUsuario,
                         FotoUsuario = e.IdUsuarioNavigation.FotoUsuario,
                         SobreNome = e.IdUsuarioNavigation.SobreNome,
-                        Tasks = e.IdUsuarioNavigation.Tasks
+                        Tasks = e.IdUsuarioNavigation.Tasks,
+                        CargaHoraria = e.IdUsuarioNavigation.CargaHoraria,
+                        HorasTrabalhadas = e.IdUsuarioNavigation.HorasTrabalhadas,
                     }
 
                 })
