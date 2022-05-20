@@ -39,24 +39,24 @@ namespace labware_webapi.Controllers
             }
         }
 
-      /*  [HttpPost]
-        public IActionResult Cadastrar(Usuario usuario)
-        {
-            try
-            {
-                if (usuario == null)
-                {
-                    return BadRequest("Não foi possível cadastrar");
-                };
-                //usuario.Senha = Criptografia.GerarHash(usuario.Senha);
-                _usuarioRepository.Cadastrar(usuario);
-                return StatusCode(201);
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error.Message);
-            }
-        }*/
+        /*  [HttpPost]
+          public IActionResult Cadastrar(Usuario usuario)
+          {
+              try
+              {
+                  if (usuario == null)
+                  {
+                      return BadRequest("Não foi possível cadastrar");
+                  };
+                  //usuario.Senha = Criptografia.GerarHash(usuario.Senha);
+                  _usuarioRepository.Cadastrar(usuario);
+                  return StatusCode(201);
+              }
+              catch (Exception error)
+              {
+                  return BadRequest(error.Message);
+              }
+          }*/
 
         [HttpPut("{idUsuario}")]
         public IActionResult Atualizar(int idUsuario, Usuario usuario)
@@ -87,7 +87,22 @@ namespace labware_webapi.Controllers
 
         }
 
-        [HttpGet("{idUsuario}")]
+        [HttpPatch("AlterarSenha")]
+        public IActionResult MudarSituacao(int idUsuario, string senha)
+        {
+            try
+            {
+                _usuarioRepository.AlterarSenha(senha, idUsuario);
+
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
+            [HttpGet("{idUsuario}")]
         public IActionResult BuscarPorId(int idUsuario)
         {
             try

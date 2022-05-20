@@ -39,9 +39,9 @@ namespace labware_webapi.Controllers
                 return BadRequest(error.Message);
             }
         }
+        
 
 
-       
         [HttpGet("{idProjeto}")]
         public IActionResult BuscarPorId(int idProjeto)
         {

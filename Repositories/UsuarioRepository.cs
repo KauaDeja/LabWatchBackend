@@ -91,7 +91,26 @@ namespace labware_webapi.Repositories
             ctx.SaveChanges();
         }
 
-        public List<Usuario> ListarTodos()
+        //public void EsqueciMinhaSenha(string sennha)
+        //{
+        //    var esqueciSenha = ctx.Usuarios.
+        //}
+
+        public void AlterarSenha(string senha, int idUsuario)
+        {
+            Usuario userBuscado = ctx.Usuarios.FirstOrDefault(v => v.IdUsuario == idUsuario);
+
+
+            if (userBuscado != null)
+                userBuscado.Senha = senha;
+
+            ctx.Usuarios.Update(userBuscado);
+
+            ctx.SaveChanges();
+        }
+    
+
+    public List<Usuario> ListarTodos()
         {
             return ctx.Usuarios.ToList();
         }
@@ -116,15 +135,16 @@ namespace labware_webapi.Repositories
             return null;
         }
 
-     /*   public void SalvarFotoDir(IFormFile foto, int id_usuario)
-        {
-            string nome_arquivo = id_usuario.ToString() + ".png ";
 
-            using (var stream = new FileStream(Path.Combine("perfil", nome_arquivo), FileMode.Create))
-            {
-                foto.CopyTo(stream);
-            }
-        }*/
+        /*   public void SalvarFotoDir(IFormFile foto, int id_usuario)
+           {
+               string nome_arquivo = id_usuario.ToString() + ".png ";
+
+               using (var stream = new FileStream(Path.Combine("perfil", nome_arquivo), FileMode.Create))
+               {
+                   foto.CopyTo(stream);
+               }
+           }*/
 
     }
 

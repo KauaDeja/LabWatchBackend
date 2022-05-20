@@ -17,5 +17,6 @@ namespace labware_webapi.Interfaces
         void AtualizarPeloId(int idUsuario, Usuario usuarioAtualizado);
         Usuario BuscarPorEmail(string email);
         void AprovarRecusar(int idUsuario, bool ativo);
+        void AlterarSenha(string senha, int idUsuario);
     }
 }
