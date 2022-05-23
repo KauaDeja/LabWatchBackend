@@ -32,34 +32,37 @@ namespace labware_webapi.Repositories
 
         public List<UsuarioEquipe> ListarTodos()
         {
-            return ctx.UsuarioEquipes
-                .Include(e => e.IdEquipeNavigation)
-                .Include(e => e.IdUsuarioNavigation).ThenInclude(e => e.Tasks)
-                .Select(e => new UsuarioEquipe()
-                {
-                    IdusuarioEquipe = e.IdusuarioEquipe,
-                    IdEquipe = e.IdEquipe,
-                    IdUsuario = e.IdUsuario,
-                    IdEquipeNavigation = new Equipe()
-                    {
-                        IdEquipe = e.IdEquipeNavigation.IdEquipe,
-                        NomeEquipe = e.IdEquipeNavigation.NomeEquipe,
-                        HorasTrabalhadas = e.IdEquipeNavigation.HorasTrabalhadas,
-                        UsuarioEquipes = e.IdEquipeNavigation.UsuarioEquipes
-                    },
-                    IdUsuarioNavigation = new Usuario()
-                    {
-                        IdUsuario = e.IdUsuarioNavigation.IdUsuario,
-                        NomeUsuario = e.IdUsuarioNavigation.NomeUsuario,
-                        FotoUsuario = e.IdUsuarioNavigation.FotoUsuario,
-                        SobreNome = e.IdUsuarioNavigation.SobreNome,
-                        Tasks = e.IdUsuarioNavigation.Tasks,
-                        CargaHoraria = e.IdUsuarioNavigation.CargaHoraria,
-                        HorasTrabalhadas = e.IdUsuarioNavigation.HorasTrabalhadas,
-                    }
+            //return ctx.UsuarioEquipes
+            //    .Include(e => e.IdEquipeNavigation)
+            //    .Include(e => e.IdUsuarioNavigation).ThenInclude(e => e.Tasks)
+            //    .Select(e => new UsuarioEquipe()
+            //    {
+            //        IdusuarioEquipe = e.IdusuarioEquipe,
+            //        IdEquipe = e.IdEquipe,
+            //        IdUsuario = e.IdUsuario,
+            //        IdEquipeNavigation = new Equipe()
+            //        {
+            //            IdEquipe = e.IdEquipeNavigation.IdEquipe,
+            //            NomeEquipe = e.IdEquipeNavigation.NomeEquipe,
+            //            HorasTrabalhadas = e.IdEquipeNavigation.HorasTrabalhadas,
+            //            UsuarioEquipes = e.IdEquipeNavigation.UsuarioEquipes
+            //        },
+            //        IdUsuarioNavigation = new Usuario()
+            //        {
+            //            IdUsuario = e.IdUsuarioNavigation.IdUsuario,
+            //            NomeUsuario = e.IdUsuarioNavigation.NomeUsuario,
+            //            FotoUsuario = e.IdUsuarioNavigation.FotoUsuario,
+            //            SobreNome = e.IdUsuarioNavigation.SobreNome,
+            //            Tasks = e.IdUsuarioNavigation.Tasks,
+            //            CargaHoraria = e.IdUsuarioNavigation.CargaHoraria,
+            //            HorasTrabalhadas = e.IdUsuarioNavigation.HorasTrabalhadas,
+            //        }
 
-                })
-                .ToList();
+            //    })
+            //    .ToList();
+
+            return ctx.UsuarioEquipes.Include(e => e.IdEquipeNavigation)
+                .Include(e => e.IdUsuarioNavigation).ThenInclude(e => e.Tasks).ToList();
         }
 
         public void MudarEquipe(int idUsuario, UsuarioEquipe EquipeAtualizada)
