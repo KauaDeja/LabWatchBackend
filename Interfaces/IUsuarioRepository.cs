@@ -18,5 +18,6 @@ namespace labware_webapi.Interfaces
         Usuario BuscarPorEmail(string email);
         void AprovarRecusar(int idUsuario, bool ativo);
         void AlterarSenha(string senha, int idUsuario);
+        void AlterarTipoUsuario(int idUsuario, int IdTipoUsuario);
     }
 }

@@ -88,7 +88,7 @@ namespace labware_webapi.Controllers
         }
 
         [HttpPatch("AlterarSenha")]
-        public IActionResult MudarSituacao(int idUsuario, string senha)
+        public IActionResult AlterarSenha(int idUsuario, string senha)
         {
             try
             {
@@ -101,8 +101,22 @@ namespace labware_webapi.Controllers
                 return BadRequest(erro);
             }
         }
+        [HttpPatch("AlterarTipoUsuario")]
+        public IActionResult AlterarTipoUsuario(int IdTipoUsuario, int idUsuario)
+        {
+            try
+            {
+                _usuarioRepository.AlterarTipoUsuario(idUsuario, IdTipoUsuario);
 
-            [HttpGet("{idUsuario}")]
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
+        [HttpGet("{idUsuario}")]
         public IActionResult BuscarPorId(int idUsuario)
         {
             try
