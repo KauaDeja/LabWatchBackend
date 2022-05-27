@@ -29,12 +29,6 @@ namespace labware_webapi.Domains
         [StringLength(256, MinimumLength = 8, ErrorMessage = "O campo senha precisa ter no mínimo 8 caracteres")]
         public string Senha { get; set; }
 
-        [Required(ErrorMessage = "Por favor, confirme a senha")]
-        [StringLength(256, MinimumLength = 8, ErrorMessage = "O campo de confirmação precisa ser igual ao de senha")]
-        [Compare("Senha")]
-        public string ConfirmarSenha { get; set; }
-
-
         public string FotoUsuario { get; set; }
         public bool? Ativo { get; set; }
 
