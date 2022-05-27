@@ -27,7 +27,7 @@ namespace labware_webapi.Domains
 
         [Required(ErrorMessage = "Por favor, informe a senha")]
         [StringLength(256, MinimumLength = 8, ErrorMessage = "O campo senha precisa ter no mínimo 8 caracteres")]
-        [RegularExpression("/^(?=.*)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]$/", ErrorMessage = "Informe uma senha válida...")]
+        [RegularExpression("^(?=.*[A - Z])(?=.*[0-9])(?=.*[a-z])$")]
         public string Senha { get; set; }
 
         public string FotoUsuario { get; set; }
