@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 namespace labware_webapi.Controllers
 {
 
+
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
@@ -207,6 +208,28 @@ namespace labware_webapi.Controllers
                         return BadRequest(ex.Message);
                     }
                 }*/
+
+        [HttpPost]
+        [Route("ForgetPassword")]
+        public async Task<IActionResult> Forget(string email)
+        {
+            try
+            {
+                var res = await _usuarioRepository.Forget(email);
+                if (res == true)
+                {
+                    return this.Ok(new { Status = true, Message = "Link Send Successfully", Data = res });
+                }
+                else
+                {
+                    return this.BadRequest(new { Status = false, Message = "Link not Sent" });
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
     }
 }

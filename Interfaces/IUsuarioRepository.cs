@@ -19,5 +19,7 @@ namespace labware_webapi.Interfaces
         void AprovarRecusar(int idUsuario, bool ativo);
         void AlterarSenha(string senha, int idUsuario);
         void AlterarTipoUsuario(int idUsuario, int IdTipoUsuario);
+        public string GenerateToken(string email);
+        Task<bool> Forget(string email);
     }
 }

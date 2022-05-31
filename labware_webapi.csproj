@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="CouchbaseNetClient" Version="3.3.1" />
+    <PackageReference Include="Experimental.System.Messaging" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.15" />
     <PackageReference Include="Microsoft.Azure.CognitiveServices.ContentModerator" Version="2.0.0" />
