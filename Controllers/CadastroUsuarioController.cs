@@ -1,5 +1,6 @@
 ﻿using labware_webapi.Contexts;
 using labware_webapi.Domains;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace labware_webapi.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "1,3")]
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUser([FromForm] Usuario usuario, IFormFile arquivo)
         {
@@ -50,6 +52,7 @@ namespace labware_webapi.Controllers
 
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<ActionResult<Usuario>> PostUser([FromForm] Usuario usuarioAtualizado, IFormFile arquivo, int id)
         {

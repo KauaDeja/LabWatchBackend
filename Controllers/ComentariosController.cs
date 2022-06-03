@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace labware_webapi.Controllers
             _repository = repo;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -34,6 +36,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Cadastrar(Comentario c)
         {
@@ -53,6 +56,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize(Roles = "1,3")]
         [HttpDelete("{idComentario}")]
         public IActionResult Deletar(int idComentario)
         {

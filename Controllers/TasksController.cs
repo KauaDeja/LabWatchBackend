@@ -2,6 +2,7 @@
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
 using labware_webapi.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace labware_webapi.Controllers
             _taskRepository = new TaskRepository();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -35,7 +37,7 @@ namespace labware_webapi.Controllers
         }
 
 
-
+        [Authorize]
         [HttpGet("{idTask}")]
         public IActionResult BuscarPorId(int idTask)
         {
@@ -51,7 +53,7 @@ namespace labware_webapi.Controllers
 
 
 
-
+        [Authorize(Roles = "1,3")]
         [HttpPost]
         public IActionResult Cadastrar(Task task)
         {
@@ -76,7 +78,7 @@ namespace labware_webapi.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPut("{idTask}")]
         public IActionResult Atualizar(int idTask, Task task)
         {
@@ -91,7 +93,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-
+        [Authorize(Roles = "1,3")]
         [HttpDelete("{idTask}")]
         public IActionResult Deletar(int idTask)
         {
@@ -107,7 +109,7 @@ namespace labware_webapi.Controllers
 
         }
 
-
+        [Authorize]
         [HttpGet("Minhas/{idUsuario}")]
         public IActionResult GetMyOwn(int idUsuario)
         {
@@ -121,6 +123,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize(Roles = "1,3")]
         [HttpPatch("{idUsuario}")]
         public IActionResult AlterarResponsavel(int idUsuario, Task task)
         {

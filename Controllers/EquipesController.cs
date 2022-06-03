@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -17,7 +18,7 @@ namespace labware_webapi.Controllers
             _repository = repo;
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -32,7 +33,7 @@ namespace labware_webapi.Controllers
         }
 
 
-
+        [Authorize]
         [HttpGet("{idEquipe}")]
         public IActionResult BuscarPorId(int idEquipe)
         {
@@ -48,7 +49,7 @@ namespace labware_webapi.Controllers
 
 
 
-
+        [Authorize(Roles = "1,3")]
         [HttpPost]
         public IActionResult Cadastrar(Equipe equipe)
         {
@@ -69,7 +70,7 @@ namespace labware_webapi.Controllers
         }
 
 
-
+        [Authorize(Roles = "1,3")]
         [HttpPut("{idEquipe}")]
         public IActionResult Atualizar(int idEquipe, Equipe equipe)
         {
@@ -84,7 +85,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-
+        [Authorize(Roles = "1,3")]
         [HttpDelete("{idEquipe}")]
         public IActionResult Deletar(int idEquipe)
         {
