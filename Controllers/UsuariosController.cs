@@ -147,7 +147,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-        [Authorize(Roles = "1,3")]
+        [Authorize]
         [HttpPatch("{idUsuario}")]
         public IActionResult AprovarRecusar(int idUsuario, bool ativo)
         {
