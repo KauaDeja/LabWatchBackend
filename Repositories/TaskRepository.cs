@@ -175,16 +175,16 @@ namespace labware_webapi.Repositories
             }
         }
 
+       
         public void MudarSituacao(int idTask, int idSituacao)
         {
             Task taskBuscada = ctx.Tasks.FirstOrDefault(c => c.IdTask == idTask);
+            StatusTask situacaoBuscada = ctx.StatusTasks.FirstOrDefault(d => d.IdStatusTask == idSituacao);
 
             if (taskBuscada != null)
             {
-                taskBuscada.IdStatusTask = idTask;
-
+                taskBuscada.IdStatusTask = situacaoBuscada.IdStatusTask;
                 ctx.Tasks.Update(taskBuscada);
-
                 ctx.SaveChanges();
             }
         }

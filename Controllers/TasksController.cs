@@ -137,8 +137,9 @@ namespace labware_webapi.Controllers
                 return BadRequest(erro);
             }
         }
+
         [Authorize]
-        [HttpPatch("{idTask}")]
+        [HttpPatch("MudarSituacao/{idTask}")]
         public IActionResult MudarSituacao(int idTask, int idStatus)
         {
             try
