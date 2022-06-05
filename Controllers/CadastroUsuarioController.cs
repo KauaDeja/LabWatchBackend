@@ -30,6 +30,13 @@ namespace labware_webapi.Controllers
             #region Upload da Imagem com extensões permitidas apenas
             string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
             string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas);
+            
+            
+            if (usuario.FotoUsuario == null)
+            {
+                usuario.FotoUsuario = Path.Combine("StaticFiles", "Images", "padrao.png");
+            }
+
 
             if (uploadResultado == "")
             {
