@@ -1,6 +1,7 @@
 ﻿using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,7 +22,9 @@ namespace labware_webapi.Controllers
             _repository = new ClienteRepository();
         }
 
-    [HttpGet]
+
+        [Authorize(Roles = "1,3")]
+        [HttpGet]
     public IActionResult ListarTodos()
     {
         try
@@ -34,7 +37,7 @@ namespace labware_webapi.Controllers
         }
     }
 
-
+        [Authorize(Roles = "1,3")]
         [HttpGet("{idCliente}")]
         public IActionResult BuscarPorId(int idCliente)
         {
@@ -48,7 +51,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-
+        [Authorize(Roles = "1,3")]
         [HttpPut("{idCliente}")]
         public IActionResult Atualizar(int idCliente, Cliente cliente)
         {
@@ -63,7 +66,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-
+        [Authorize(Roles = "1,3")]
         [HttpDelete("{idCliente}")]
         public IActionResult Deletar(int idCliente)
         {

@@ -26,7 +26,7 @@ namespace labware_webapi.Controllers
             _repository = new ProjetoRepository();
         }
 
-        
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -39,9 +39,9 @@ namespace labware_webapi.Controllers
                 return BadRequest(error.Message);
             }
         }
-        
 
 
+        [Authorize]
         [HttpGet("{idProjeto}")]
         public IActionResult BuscarPorId(int idProjeto)
         {
@@ -77,7 +77,7 @@ namespace labware_webapi.Controllers
              }
          }*/
 
-
+        [Authorize]
         [HttpPut("{idProjeto}")]
         public IActionResult Atualizar(int idProjeto, Projeto projeto)
         {
@@ -92,7 +92,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-       
+        [Authorize]
         [HttpDelete("{idProjeto}")]
         public IActionResult Deletar(int idProjeto)
         {
@@ -145,7 +145,7 @@ namespace labware_webapi.Controllers
 
              }*/
 
-        
+        [Authorize]
         [HttpGet("Minhas/{idUsuario}")]
         public IActionResult GetMyOwn(int idUsuario)
         {
@@ -160,7 +160,7 @@ namespace labware_webapi.Controllers
             }
         }
 
-        
+        [Authorize]
         [HttpPost]
         public IActionResult Cadastrar(Projeto projeto)
         {
@@ -186,6 +186,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("MudarSituacao")]
         public IActionResult MudarSituacao(int idProjeto, int statusProjeto)
         {

@@ -1,5 +1,7 @@
 ﻿using labware_webapi.Contexts;
+using System.IO;
 using labware_webapi.Domains;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,7 @@ namespace labware_webapi.Controllers
             _context = context;
         }
 
+        
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUser([FromForm] Usuario usuario, IFormFile arquivo)
         {
@@ -28,6 +31,13 @@ namespace labware_webapi.Controllers
             #region Upload da Imagem com extensões permitidas apenas
             string[] extensoesPermitidas = { "jpg", "png", "jpeg", "gif" };
             string uploadResultado = Upload.UploadFile(arquivo, extensoesPermitidas);
+            
+            
+            if (usuario.FotoUsuario == null)
+            {
+                usuario.FotoUsuario = Path.Combine("StaticFiles", "Images", "padrao.png");
+            }
+
 
             if (uploadResultado == "")
             {
@@ -50,6 +60,7 @@ namespace labware_webapi.Controllers
 
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<ActionResult<Usuario>> PostUser([FromForm] Usuario usuarioAtualizado, IFormFile arquivo, int id)
         {

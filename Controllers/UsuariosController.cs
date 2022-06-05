@@ -3,6 +3,7 @@ using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
 using labware_webapi.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace labware_webapi.Controllers
             _usuarioRepository = repo;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -58,6 +60,7 @@ namespace labware_webapi.Controllers
               }
           }*/
 
+        [Authorize]
         [HttpPut("{idUsuario}")]
         public IActionResult Atualizar(int idUsuario, Usuario usuario)
         {
@@ -72,6 +75,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize(Roles = "1,3")]
         [HttpDelete("{idUsuario}")]
         public IActionResult Deletar(int idUsuario)
         {
@@ -87,8 +91,9 @@ namespace labware_webapi.Controllers
 
         }
 
+  
         [HttpPatch("AlterarSenha")]
-        public IActionResult MudarSituacao(int idUsuario, string senha)
+        public IActionResult AlterarSenha(int idUsuario, string senha)
         {
             try
             {
@@ -101,8 +106,22 @@ namespace labware_webapi.Controllers
                 return BadRequest(erro);
             }
         }
+        [HttpPatch("AlterarTipoUsuario")]
+        public IActionResult AlterarTipoUsuario(int IdTipoUsuario, int idUsuario)
+        {
+            try
+            {
+                _usuarioRepository.AlterarTipoUsuario(idUsuario, IdTipoUsuario);
 
-            [HttpGet("{idUsuario}")]
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
+        [HttpGet("{idUsuario}")]
         public IActionResult BuscarPorId(int idUsuario)
         {
             try
@@ -128,6 +147,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPatch("{idUsuario}")]
         public IActionResult AprovarRecusar(int idUsuario, bool ativo)
         {

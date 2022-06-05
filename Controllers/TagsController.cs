@@ -3,6 +3,7 @@ using labware_webapi.Domains;
 using labware_webapi.Interfaces;
 using labware_webapi.Repositories;
 using labware_webapi.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace labware_webapi.Controllers
             _tag = new TagRepository();
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -37,6 +39,7 @@ namespace labware_webapi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Cadastrar(Tag tag)
         {

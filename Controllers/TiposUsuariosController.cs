@@ -51,7 +51,7 @@ namespace labware_webapi.Controllers
         }
 
 
-
+      
         [HttpPost]
         public IActionResult Cadastrar(TipoUsuario tipo)
         {

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 
 #nullable disable
 
@@ -22,7 +24,12 @@ namespace labware_webapi.Domains
         public decimal CargaHoraria { get; set; }
         public decimal HorasTrabalhadas { get; set; }
         public string Email { get; set; }
+
+       /* [Required(ErrorMessage = "Por favor, informe a senha")]
+        [StringLength(256, MinimumLength = 8, ErrorMessage = "O campo senha precisa ter no mínimo 8 caracteres")]
+        [RegularExpression(@"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$")]*/
         public string Senha { get; set; }
+
         public string FotoUsuario { get; set; }
         public bool? Ativo { get; set; }
 

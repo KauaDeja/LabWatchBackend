@@ -108,9 +108,9 @@ namespace labware_webapi.Repositories
 
             ctx.SaveChanges();
         }
-    
 
-    public List<Usuario> ListarTodos()
+
+        public List<Usuario> ListarTodos()
         {
             return ctx.Usuarios.ToList();
         }
@@ -135,6 +135,19 @@ namespace labware_webapi.Repositories
             return null;
         }
 
+        public void AlterarTipoUsuario(int idUsuario, int IdTipoUsuario)
+        {
+            Usuario userBuscado = ctx.Usuarios.FirstOrDefault(v => v.IdUsuario == idUsuario);
+
+
+            if (userBuscado != null)
+                userBuscado.IdTipoUsuario = IdTipoUsuario;
+
+            ctx.Usuarios.Update(userBuscado);
+
+            ctx.SaveChanges();
+        }
+
 
         /*   public void SalvarFotoDir(IFormFile foto, int id_usuario)
            {
@@ -144,7 +157,8 @@ namespace labware_webapi.Repositories
                {
                    foto.CopyTo(stream);
                }
-           }*/
+           }*/ 
+        // mudando files para teste de deploy
 
     }
 
