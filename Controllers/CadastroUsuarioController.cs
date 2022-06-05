@@ -23,7 +23,7 @@ namespace labware_webapi.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "1,3")]
+        
         [HttpPost]
         public async Task<ActionResult<Usuario>> PostUser([FromForm] Usuario usuario, IFormFile arquivo)
         {
