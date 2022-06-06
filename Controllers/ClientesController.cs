@@ -23,7 +23,7 @@ namespace labware_webapi.Controllers
         }
 
 
-        [Authorize(Roles = "1,3")]
+        [Authorize]
         [HttpGet]
     public IActionResult ListarTodos()
     {
